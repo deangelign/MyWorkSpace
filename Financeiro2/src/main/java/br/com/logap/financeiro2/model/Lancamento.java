@@ -20,7 +20,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
 @Entity
 @Table(name = "lancamento")
 
@@ -35,7 +34,7 @@ public class Lancamento {
 	private Pessoa pessoa;
 	
 	@NotEmpty
-	@Size(max = 80)
+	@Size(max=80)
 	@Column(length = 80, nullable = false)
 	private String descricao;
 	
@@ -49,6 +48,7 @@ public class Lancamento {
 	@Column(nullable = false)
 	private TipoLancamento tipo;
 	
+	
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_vencimento", nullable = false)
@@ -57,59 +57,63 @@ public class Lancamento {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "data_pagamento", nullable = true)
 	private Date dataPagamento;
-
+	
+	
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
-
+	
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
+	
+	
 	public String getDescricao() {
 		return descricao;
 	}
-
+	
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
+	
 	public BigDecimal getValor() {
 		return valor;
 	}
-
+	
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+	
 
 	public TipoLancamento getTipo() {
 		return tipo;
 	}
-
+	
 	public void setTipo(TipoLancamento tipo) {
 		this.tipo = tipo;
 	}
-
+	
 	public Date getDataVencimento() {
 		return dataVencimento;
 	}
-
+	
 	public void setDataVencimento(Date dataVencimento) {
 		this.dataVencimento = dataVencimento;
 	}
-
+	
 	public Date getDataPagamento() {
 		return dataPagamento;
 	}
-
+	
 	public void setDataPagamento(Date dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
@@ -121,7 +125,6 @@ public class Lancamento {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -139,7 +142,12 @@ public class Lancamento {
 		return true;
 	}
 	
-	
-	
 
+	
+	
+	
+	
+	
+	
+	
 }
