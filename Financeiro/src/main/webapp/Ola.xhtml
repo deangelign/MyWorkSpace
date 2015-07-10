@@ -1,5 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
+xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 	<h:head>
 		<title>Olá JSF</title>
@@ -7,14 +7,12 @@
 
 	<h:body>
 		<h:form>
-		
-			<h1>Olá #{ola.nomeCompleto}</h1>
-			Nome: <h:inputText value = "#{ola.nome}"/>
+			<h1>Olá</h1>
+			Nome: <h:inputText />
 			<br/>
-			Sobrenome: <h:inputText value = "#{ola.sobrenome}"/>
+			Sobrenome: <h:inputText />
 			<br/>
-			<h:commandButton value="Dizer olá" action = "#{ola.dizerOla}" />
-			
+			<h:commandButton value="Dizer olá" />
 		</h:form>
 	</h:body>
 </html>
