@@ -1,11 +1,13 @@
 package br.com.projetobase.modelo;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import br.com.projetobase.arq.modelo.ModeloPersistencia;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Classe que representa o usuário do sistema.
@@ -18,12 +20,17 @@ import br.com.projetobase.arq.modelo.ModeloPersistencia;
 @Table(name = "usuario")
 public class Usuario extends ModeloPersistencia {
 
+	private static final long serialVersionUID = 1L;
+	
+	@NotEmpty
 	@Column(name = "nome", nullable = false)
 	private String nome;
 
+	@NotEmpty
 	@Column(name = "email", nullable = false)
 	private String email;
 
+	@NotEmpty
 	@Column(name = "senha")
 	private String senha;
 
