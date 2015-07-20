@@ -1,48 +1,58 @@
 package br.com.projetobase.web;
 
-import java.util.Date;
-
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
+import br.com.projetobase.arq.util.DadosSessao;
 import br.com.projetobase.dao.UsuarioDAO;
-import br.com.projetobase.dao.hibernate.UsuarioHibernateDAO;
 import br.com.projetobase.modelo.Usuario;
 
 @Named
 @RequestScoped
-public class LoginBean {
+public class LoginBean extends AbstractBean {
+
+	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private Usuario usuario;
 
-	private String nomeUsuario;
-	private String senha;
+	@Inject
+	private UsuarioDAO usuarioHibernateDAO;
 	
-	private UsuarioHibernateDAO usuarioHibernateDAO;
+	@Inject
+	private DadosSessao dadosSessao;
 
 	public String login() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		
-		this.usuarioHibernateDAO.buscarPorNome(this.nomeUsuario);
-		
-		if ("admin".equals(this.nomeUsuario) && "123".equals(this.senha)) {
-			
-			
-			this.usuario.setNome(this.nomeUsuario);
-			return "/ConsultaLancamentos?faces-redirect=true";
-		} else {
-			FacesMessage mensagem = new FacesMessage("Usuário/senha inválidos!");
-			mensagem.setSeverity(FacesMessage.SEVERITY_ERROR);
-			context.addMessage(null, mensagem);
+		Usuario usuario = this.usuarioHibernateDAO.buscarPorEmail(this.usuario.getEmail());
+		if (usuario != null) {
+			if (this.usuario.getSenha().equals(usuario.getSenha())) {
+				dadosSessao.adicionarUsuario(usuario);
+				return navegacaoPaginas.getHome().redirect().construir();
+			} else {
+				gerenciadorDeMensagens.addMensagemErro(gerenciadorDeMensagens.getMensagem("usuario_incorreto"));
+			}
+		} 
+		else {
+			gerenciadorDeMensagens.addMensagemErro(gerenciadorDeMensagens.getMensagem("usuario_incorreto"));
 		}
 
-		return null;
+		return retornarMesmaPagina();
 	}
-
+	
+	public String sair() {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+		session.invalidate();
+		return navegacaoPaginas.getLogin().redirect().construir();
+	}
+	
+	public String irParaCadastroPessoa(){
+		return navegacaoPaginas.getCadastrarUsuario().redirect().construir();
+	}
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -50,22 +60,5 @@ public class LoginBean {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
-
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	
 }

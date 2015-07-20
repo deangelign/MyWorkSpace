@@ -88,9 +88,20 @@ public class NavegacaoPaginasController {
 	}
 	
     private final Pagina login = new Pagina("/login");
+    private final Pagina home = new Pagina("/home");
+    private final Pagina cadastrarUsuario = new Pagina("/form_usuario");
 
 	public Pagina getLogin() {
 		return login;
+	}
+	
+	
+	public Pagina getCadastrarUsuario() {
+		return cadastrarUsuario;
+	}
+
+	public Pagina getHome() {
+		return home;
 	}
 	
 }

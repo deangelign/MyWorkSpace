@@ -1,13 +1,15 @@
 package br.com.projetobase.modelo;
 
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import br.com.projetobase.arq.modelo.ModeloPersistencia;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import br.com.projetobase.arq.modelo.ModeloPersistencia;
 
 /**
  * Classe que representa o usuário do sistema.
@@ -15,7 +17,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author danilo-barros
  *
  */
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "usuario")
 public class Usuario extends ModeloPersistencia {
@@ -27,15 +28,15 @@ public class Usuario extends ModeloPersistencia {
 	private String nome;
 
 	@NotEmpty
-	@Column(name = "email", nullable = false)
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
 	@NotEmpty
 	@Column(name = "senha")
 	private String senha;
-
+	
 	@Transient
-	private String novaSenha;
+	private String confirmarSenha;
 
 	public Usuario() {
 	}
@@ -64,12 +65,20 @@ public class Usuario extends ModeloPersistencia {
 		this.senha = senha;
 	}
 
-	public String getNovaSenha() {
-		return novaSenha;
+	
+	public String toString(){
+		 
+		return this.nome + " ; " + this.email + " ; " + this.senha;
 	}
 
-	public void setNovaSenha(String novaSenha) {
-		this.novaSenha = novaSenha;
+	public String getConfirmarSenha() {
+		return confirmarSenha;
 	}
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+	
+	
 
 }

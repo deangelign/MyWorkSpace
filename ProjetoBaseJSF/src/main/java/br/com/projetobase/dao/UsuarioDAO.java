@@ -5,5 +5,6 @@ import br.com.projetobase.modelo.Usuario;
 
 public interface UsuarioDAO extends DAO<Usuario> {
 	
-	Usuario buscarPorNome(String nome);
+	Usuario buscarPorEmail(String nome);
+	boolean cadastrarUsuario(Usuario usuario);
 }

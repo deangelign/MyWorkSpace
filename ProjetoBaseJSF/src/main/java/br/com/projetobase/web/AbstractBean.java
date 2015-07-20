@@ -2,7 +2,6 @@ package br.com.projetobase.web;
 
 import java.io.Serializable;
 
-import javax.enterprise.context.Conversation;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +15,6 @@ public class AbstractBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	protected Conversation conversation;
-	
 	@Inject
 	protected GerenciadorDeMensagens gerenciadorDeMensagens;
 	
