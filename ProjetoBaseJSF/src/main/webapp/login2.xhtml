@@ -30,7 +30,7 @@
 		name="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
 
 	<h:outputScript name="bootstrap/js/bootstrap.js" />
-	
+
 	<h:outputStylesheet library="algaworks" name="estilo.css" />
 
 </h:head>
@@ -38,8 +38,9 @@
 <h:body>
 
 	<header> <h:graphicImage library="algaworks" name="logo.png"
-		width="200" height="60" />
-	</header>
+		width="200" height="60" /> </header>
+
+
 
 	<div class="container">
 		<div class="row">
@@ -68,9 +69,14 @@
 									class="btn btn-lg btn-success btn-block" />
 
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-								<button type="button" class="btn btn-primary"
-									action="#{login.irParaCadastroPessoa}">Cadastrar-se</button>
+
 							</fieldset>
+
+						</h:form>
+
+						<h:form id="formRedirectCadastroUsuario">
+							<h:commandButton class="btn btn-primary" value="Cadastrar-se"
+								action="#{loginBean.irParaCadastroPessoa}" />
 						</h:form>
 					</div>
 				</div>

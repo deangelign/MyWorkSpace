@@ -50,7 +50,9 @@ public class LoginBean extends AbstractBean {
 	}
 	
 	public String irParaCadastroPessoa(){
+		System.out.println("miauuuuuuuuuuuuuu");
 		return navegacaoPaginas.getCadastrarUsuario().redirect().construir();
+		
 	}
 	
 	public Usuario getUsuario() {
