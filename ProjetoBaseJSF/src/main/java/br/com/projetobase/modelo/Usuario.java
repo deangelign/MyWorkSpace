@@ -38,6 +38,17 @@ public class Usuario extends ModeloPersistencia {
 	@Transient
 	private String confirmarSenha;
 
+	@Transient
+	private boolean Logado;
+	
+	public boolean isLogado() {
+		return Logado;
+	}
+
+	public void setLogado(boolean logado) {
+		Logado = logado;
+	}
+
 	public Usuario() {
 	}
 	

@@ -49,8 +49,16 @@ public class LoginBean extends AbstractBean {
 		return navegacaoPaginas.getLogin().redirect().construir();
 	}
 	
+	public String irParaLogin() {
+		return navegacaoPaginas.getLogin().redirect().construir();
+
+	}
+	
+	public String irParaHome() {
+		return navegacaoPaginas.getHome().redirect().construir();
+	}
+	
 	public String irParaCadastroPessoa(){
-		System.out.println("miauuuuuuuuuuuuuu");
 		return navegacaoPaginas.getCadastrarUsuario().redirect().construir();
 		
 	}
