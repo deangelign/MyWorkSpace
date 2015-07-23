@@ -4,11 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import br.com.projetobase.arq.modelo.ModeloPersistencia;
+
 
 
 @Entity
 @Table(name = "equipamento")
-public class Equipamento {
+public class Equipamento extends ModeloPersistencia{
 	
 	
 	@Column(name = "nome", nullable = false)

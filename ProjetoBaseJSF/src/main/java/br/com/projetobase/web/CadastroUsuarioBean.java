@@ -19,13 +19,9 @@ public class CadastroUsuarioBean extends AbstractBean {
 
 	public void cadastrar() {
 
-		//System.out.println(this.usuario.getNome());
-		//System.out.println(this.usuario.getSenha());
-		//System.out.println(this.usuario.getEmail());
-		//System.out.println(this.usuario.getConfirmarSenha());
-
+		
 		 usuarioService.salvar(usuario);
-		 //System.out.println("pronto");
+		 
 	}
 
 	public Usuario getUsuario() {

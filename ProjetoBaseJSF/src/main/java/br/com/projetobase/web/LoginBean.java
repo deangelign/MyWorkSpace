@@ -71,4 +71,5 @@ public class LoginBean extends AbstractBean {
 		this.usuario = usuario;
 	}
 	
+	
 }

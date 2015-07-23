@@ -88,7 +88,8 @@ public class NavegacaoPaginasController {
 	}
 	
     private final Pagina login = new Pagina("/login");
-    private final Pagina home = new Pagina("/home");
+    private final Pagina home = new Pagina("/paginas/home");
+    private final Pagina cadastrarEquipamento = new Pagina("/paginas/form_equipamento");
     private final Pagina cadastrarUsuario = new Pagina("/form_usuario");
 
 	public Pagina getLogin() {
@@ -98,6 +99,10 @@ public class NavegacaoPaginasController {
 	
 	public Pagina getCadastrarUsuario() {
 		return cadastrarUsuario;
+	}
+	
+	public Pagina getCadastrarEquipamento() {
+		return cadastrarEquipamento;
 	}
 
 	public Pagina getHome() {

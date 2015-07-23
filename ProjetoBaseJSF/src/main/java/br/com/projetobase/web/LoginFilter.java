@@ -9,11 +9,13 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.projetobase.arq.util.DadosSessao;
 
+//@WebFilter("/paginas/*.xhtml")
 public class LoginFilter implements Filter {
 
 	private static final String LOGIN_PAGE = "/login.jsf";
@@ -32,9 +34,9 @@ public class LoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req;
 
 		if (dadosSessao.getUsuarioDaSessao() != null) {
-			//chain.doFilter(req, res);
+			chain.doFilter(req, res);
 		} else {
-			//response.sendRedirect(request.getContextPath() + LOGIN_PAGE);
+			response.sendRedirect(request.getContextPath() + LOGIN_PAGE);
 		}
 
 	}

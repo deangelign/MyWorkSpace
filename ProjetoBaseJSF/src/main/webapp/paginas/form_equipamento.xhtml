@@ -44,6 +44,7 @@
 
 <link
 	href="${facesContext.externalContext.requestContextPath}/resources/algaworks/estilo.css" />
+
 </head>
 
 
@@ -69,17 +70,16 @@
 				<!-- /.navbar-header -->
 
 				<ul class="nav navbar-top-links navbar-right">
-					
-					<li class="dropdown">
-						Olá #{dadosSessao.usuario.nome}
-					</li>
-					
+
+					<li class="dropdown">Olá #{dadosSessao.usuario.nome}</li>
+
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#"> <i class="fa fa-database"></i>
 							<i class="fa fa-caret-down"></i>
 					</a>
 						<ul class="dropdown-menu dropdown-alerts">
-							<li><h:commandLink action="#{homeBean.irParaCadastroEquipamento}">
+							<li><h:commandLink
+									action="#{homeBean.irParaCadastroEquipamento}">
 									<div>
 										<i class="glyphicon glyphicon-hdd"></i> Cadastrar Equipamento
 									</div>
@@ -165,12 +165,32 @@
 			</nav>
 
 			<div id="page-wrapper">
+
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Home</h1>
+						<h1 class="page-header">Cadastro de Equipamento</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
+
+				<h:form>
+					<div class="panel-body">
+
+						<h:message for="nomeEquipamento" style="color: red;" />
+						<div class="form-group">
+							<h:inputText id="nomeEquipamento" class="form-control"
+								pt:placeholder="Nome do Equipamento"
+								value="#{CadastroEquipamentoBean.equipamento.nome}"
+								required="true" requiredMessage="Por favor digite o nome do Componente"/>
+								
+								<h:commandButton class="btn btn-primary" value="Salvar"
+								action="#{cadastroUsuarioBean.irParaLogin}" />
+								
+						</div>
+
+					</div>
+				</h:form>
+				
 			</div>
 			<!-- /#page-wrapper -->
 
@@ -179,7 +199,6 @@
 
 		</div>
 	</h:form>
-
 	<!-- jQuery -->
 	<script
 		src="${facesContext.externalContext.requestContextPath}/resources/bower_components/jquery/dist/jquery.min.js"></script>
@@ -195,6 +214,8 @@
 	<!-- Custom Theme JavaScript -->
 	<script
 		src="${facesContext.externalContext.requestContextPath}/resources/js/sb-admin-2.js"></script>
+
+
 
 </h:body>
 </html>
