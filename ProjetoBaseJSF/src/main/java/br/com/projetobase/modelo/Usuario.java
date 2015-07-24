@@ -1,9 +1,11 @@
 package br.com.projetobase.modelo;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -35,6 +37,17 @@ public class Usuario extends ModeloPersistencia {
 	@Column(name = "senha")
 	private String senha;
 	
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Equipamento> equipamentos;
+	
+	public List<Equipamento> getEquipamentos() {
+		return equipamentos;
+	}
+
+	public void setEquipamentos(List<Equipamento> equipamentos) {
+		this.equipamentos = equipamentos;
+	}
+
 	@Transient
 	private String confirmarSenha;
 

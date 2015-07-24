@@ -27,6 +27,7 @@ public class LoginBean extends AbstractBean {
 
 	public String login() {
 		Usuario usuario = this.usuarioHibernateDAO.buscarPorEmail(this.usuario.getEmail());
+		
 		if (usuario != null) {
 			if (this.usuario.getSenha().equals(usuario.getSenha())) {
 				dadosSessao.adicionarUsuario(usuario);

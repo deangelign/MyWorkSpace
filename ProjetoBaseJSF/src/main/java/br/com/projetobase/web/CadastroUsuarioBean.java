@@ -11,6 +11,8 @@ import br.com.projetobase.web.service.UsuarioService;
 @RequestScoped
 public class CadastroUsuarioBean extends AbstractBean {
 
+	private static final long serialVersionUID = 1L;
+
 	@Inject
 	private Usuario usuario;
 

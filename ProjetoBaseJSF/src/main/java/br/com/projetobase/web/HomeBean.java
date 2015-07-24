@@ -20,9 +20,18 @@ public class HomeBean extends AbstractBean {
 		
 	}
 	
+	public String irParaLogin() {
+		return navegacaoPaginas.getLogin().redirect().construir();
+	}
+	
 	public String irParaCadastroEquipamento(){
 		return navegacaoPaginas.getCadastrarEquipamento().redirect().construir();
 	}
+	
+	public String irParaCadastroSensor(){
+		return navegacaoPaginas.getCadastrarSensor().redirect().construir();
+	}
+
 	
 	
 }

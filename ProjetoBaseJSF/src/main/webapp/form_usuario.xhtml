@@ -62,37 +62,39 @@
 							</div>
 
 							<div class="form-group">
-								<h:inputText class="form-control" id="email" pt:placeholder="Email"
-									value="#{cadastroUsuarioBean.usuario.email}" required="true" 
-									requiredMessage="Por favor digite um Email" >
-									
+								<h:inputText class="form-control" id="email"
+									pt:placeholder="Email"
+									value="#{cadastroUsuarioBean.usuario.email}" required="true"
+									requiredMessage="Por favor digite um Email">
+
 									<f:validator validatorId="emailValidator" />
-								</h:inputText>	
-									
+								</h:inputText>
+
 							</div>
 							<h:message for="email" style="color: red;" />
 
 							<div class="form-group">
-								<h:inputSecret id="password" class="form-control" pt:placeholder="Senha"
+								<h:inputSecret id="password" class="form-control"
+									pt:placeholder="Senha"
 									value="#{cadastroUsuarioBean.usuario.senha}" required="true"
 									requiredMessage="Por favor digite a senha">
-									
+
 									<f:validator validatorId="passwordValidator" />
 									<f:attribute name="confirmPassword" value="#{confirmPassword}" />
-									
+
 								</h:inputSecret>
 								<h:message for="password" style="color: red;" />
 							</div>
 
 							<div class="form-group">
-								<h:inputSecret class="form-control" id = "confirmPassword"
+								<h:inputSecret class="form-control" id="confirmPassword"
 									pt:placeholder="Digite a senha novamente"
 									binding="#{confirmPassword}"
 									value="#{cadastroUsuarioBean.usuario.confirmarSenha}"
 									required="true" requiredMessage="Por favor confirme a senha" />
 							</div>
 							<h:message for="confirmPassword" style="color: red;" />
-							
+
 							<h:commandButton value="Cadastrar"
 								action="#{cadastroUsuarioBean.cadastrar}"
 								class="btn btn-lg btn-success btn-block" />
