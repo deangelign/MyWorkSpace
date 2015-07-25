@@ -15,5 +15,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         
         <mapping class="br.com.projetobase.modelo.Usuario"/>
+        <mapping class="br.com.projetobase.modelo.Equipamento"/>
+        <mapping class="br.com.projetobase.modelo.Sensor"/>
 	</session-factory>
 </hibernate-configuration>

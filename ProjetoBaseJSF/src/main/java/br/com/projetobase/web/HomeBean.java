@@ -17,11 +17,21 @@ public class HomeBean extends AbstractBean {
 	private UsuarioService usuarioService;
 	
 	public void testeHibernate() {
-		Usuario usuario = new Usuario();
-		usuario.setEmail("akdbaksjndkands");
-		usuario.setNome("iasdnandjakd");
-		usuario.setSenha("aljdnandkajsd");
-		usuarioService.salvar(usuario);
+		
 	}
+	
+	public String irParaLogin() {
+		return navegacaoPaginas.getLogin().redirect().construir();
+	}
+	
+	public String irParaCadastroEquipamento(){
+		return navegacaoPaginas.getCadastrarEquipamento().redirect().construir();
+	}
+	
+	public String irParaCadastroSensor(){
+		return navegacaoPaginas.getCadastrarSensor().redirect().construir();
+	}
+
+	
 	
 }

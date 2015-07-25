@@ -3,9 +3,11 @@ package br.com.projetobase.arq.util;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 import br.com.projetobase.modelo.Usuario;
 
+@Named
 @SessionScoped
 public class DadosSessao implements Serializable {
 
@@ -17,6 +19,10 @@ public class DadosSessao implements Serializable {
 	}
 
 	public Usuario getUsuarioDaSessao() {
+		return usuario;
+	}
+
+	public Usuario getUsuario() {
 		return usuario;
 	}
 
