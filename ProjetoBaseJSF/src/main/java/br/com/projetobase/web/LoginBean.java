@@ -27,6 +27,7 @@ public class LoginBean extends AbstractBean {
 
 	public String login() {
 		Usuario usuario = this.usuarioHibernateDAO.buscarPorEmail(this.usuario.getEmail());
+		
 		if (usuario != null) {
 			if (this.usuario.getSenha().equals(usuario.getSenha())) {
 				dadosSessao.adicionarUsuario(usuario);
@@ -49,8 +50,16 @@ public class LoginBean extends AbstractBean {
 		return navegacaoPaginas.getLogin().redirect().construir();
 	}
 	
+	public String irParaLogin() {
+		return navegacaoPaginas.getLogin().redirect().construir();
+
+	}
+	
+	public String irParaHome() {
+		return navegacaoPaginas.getHome().redirect().construir();
+	}
+	
 	public String irParaCadastroPessoa(){
-		System.out.println("miauuuuuuuuuuuuuu");
 		return navegacaoPaginas.getCadastrarUsuario().redirect().construir();
 		
 	}
@@ -62,5 +71,6 @@ public class LoginBean extends AbstractBean {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
 	
 }
