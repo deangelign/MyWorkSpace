@@ -80,12 +80,8 @@
 			<scope>compile</scope>
 		</dependency>
 		
-				<!-- Theme Bootstrap PrimeFace -->
-		<dependency>
-			<groupId>org.primefaces.themes</groupId>
-			<artifactId>bootstrap</artifactId>
-			<version>1.0.10</version>
-		</dependency>
+	
+
 
 	</dependencies>
 
