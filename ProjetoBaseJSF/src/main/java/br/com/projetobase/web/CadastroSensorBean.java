@@ -9,17 +9,49 @@ import javax.inject.Named;
 import br.com.projetobase.arq.util.DadosSessao;
 import br.com.projetobase.dao.hibernate.EquipamentoHibernateDAO;
 import br.com.projetobase.modelo.Equipamento;
+import br.com.projetobase.modelo.Sensor;
+import br.com.projetobase.web.service.SensorService;
 
 @Named
-@ViewScoped
+@javax.faces.view.ViewScoped
 public class CadastroSensorBean extends AbstractBean{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Equipamento equipamento;
+
 
 	private List<Equipamento> equipamentos;
 	
+	
+	private List<Sensor> sensores;
+	
+	@Inject
+	private Equipamento equipamento;
+	
+	@Inject
+	private Sensor sensor;
+	
+	@Inject
+	private SensorService sensorService;
+	
+	public void cadastrar(){
+		sensor.setEquipamento(equipamento);
+		System.out.println("aaaaaaaaaaaaaa");
+		System.out.println(sensor.getNome());
+		sensorService.salvar(sensor);
+	}
+	
+	public Sensor getSensor() {
+		return sensor;
+	}
+
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
+	}
+
+	
+
+
 	public CadastroSensorBean() {
 	}
 	
@@ -28,6 +60,8 @@ public class CadastroSensorBean extends AbstractBean{
 		this.equipamentos = equipamentoHibernateDAO.buscarEquipamentosUsuario(dadosSessao.getUsuario().getId());
 		equipamento = new Equipamento();
 	}
+	
+
 	
 	public List<Equipamento> getEquipamentos() {
 		return equipamentos;
@@ -44,6 +78,18 @@ public class CadastroSensorBean extends AbstractBean{
 	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
 	}
+
+	public List<Sensor> getSensores() {
+		return sensores;
+	}
+
+	public void setSensores(List<Sensor> sensores) {
+		this.sensores = sensores;
+	}
+	
+	
+	
+	
 	
 	
 	

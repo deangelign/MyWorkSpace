@@ -176,19 +176,50 @@
 			</div>
 
 			<h:form>
+
 				<div class="panel-body">
 
-					<h:outputText value="Selecione o Equipamento" />
+					<div class="form-group">
+						<h:outputText value="Selecione o Equipamento" />
 
-					<h:selectOneMenu label="Equipamento" value="#{cadastroSensorBean.equipamento.id}">
-						<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-						<f:selectItems value="#{cadastroSensorBean.equipamentos}" 
-						var="_equipamento" itemValue = "#{_equipamento.id}" itemLabel = "#{_equipamento.nome}" />
-						
-					</h:selectOneMenu>
+						<h:selectOneMenu label="Equipamento"
+							value="#{cadastroSensorBean.equipamento.id}">
+							<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+							<f:selectItems value="#{cadastroSensorBean.equipamentos}"
+								var="_equipamento" itemValue="#{_equipamento.id}"
+								itemLabel="#{_equipamento.nome}" />
 
+
+
+						</h:selectOneMenu>
+					</div>
+
+					<div class="form-group">
+						<h:outputText value="Digite o nome do sensor" />
+						<h:outputText value="&lt;br/&gt;" escape="false" />
+						<h:inputText id="nomeEquipamento" class="form-control"
+							pt:placeholder="Nome do Sensor"
+							value="#{cadastroSensorBean.sensor.nome}"
+							required="true"
+							requiredMessage="Por favor digite o nome do Componente" />
+
+					</div>
+
+
+
+					<h:commandButton class="btn btn-primary" value="Salvar"
+						action="#{cadastroSensorBean.cadastrar}" />
+					
 				</div>
+				
+				
+
 			</h:form>
+			
+			<h:dataTable value="#{livrosBean.livros}" var="livro">
+			</h:dataTable>
+
+			<div class="row"></div>
 
 		</div>
 		<!-- /#page-wrapper -->
