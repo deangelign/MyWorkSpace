@@ -8,5 +8,5 @@ import br.com.projetobase.modelo.Sensor;
 
 public interface SensorDAO extends DAO<Sensor>{
 	
-	List<Equipamento> buscarSensoresEquipamento(long equipamentoID);
+	List<Sensor> buscarSensoresEquipamento(long equipamentoID);
 }
