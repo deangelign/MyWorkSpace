@@ -1,5 +1,7 @@
 package br.com.projetobase.modelo;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,9 @@ import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -26,6 +31,22 @@ public class Sensor extends ModeloPersistencia{
 	@JoinColumn(name = "id_equipamento", foreignKey = @ForeignKey(name = "fk_equipamento"))
 	private Equipamento equipamento;
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "data_cadastro", nullable = false)
+	private Date dataCadastro; 
+	
+	@Transient
+	boolean editable;
+	
+	
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -41,6 +62,21 @@ public class Sensor extends ModeloPersistencia{
 	public void setEquipamento(Equipamento equipamento) {
 		this.equipamento = equipamento;
 	}
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+	
+	public String editAction(Sensor sensor){
+		sensor.setEditable(true);
+		return null;	
+	}
+	
+	
 	
 	
 	

@@ -1,5 +1,8 @@
 package br.com.projetobase.web;
 
+import java.util.Date;
+
+
 import java.util.List;
 
 import javax.faces.event.AjaxBehaviorEvent;
@@ -38,6 +41,8 @@ public class CadastroSensorBean extends AbstractBean {
 	@Inject
 	private SensorHibernateDAO sensorHibernateDAO;
 	
+	private String aux = "Salvar";
+	
 	public CadastroSensorBean() {
 	}
 
@@ -51,6 +56,7 @@ public class CadastroSensorBean extends AbstractBean {
 
 	public void cadastrar() {
 		sensor.setEquipamento(equipamento);
+		sensor.setDataCadastro(new Date());
 		sensorService.salvar(sensor);
 	}
 
@@ -63,13 +69,19 @@ public class CadastroSensorBean extends AbstractBean {
 	}
 
 	public void atualizarLista(AjaxBehaviorEvent e) {
-		System.out.println("akiiiiiiiii");
+		
 		if (equipamento.getId() != null) {
-			System.out.println("entreiiiiiii");
-			//this.sensores = sensorHibernateDAO
-			//		.buscarSensoresEquipamento(equipamento.getId());
+			this.sensores = sensorHibernateDAO
+					.buscarSensoresEquipamento(equipamento.getId());
+		}else{
+			sensores.clear();
 		}
 	}
+	
+	public void teste(AjaxBehaviorEvent e) {
+		this.aux = this.aux + "mudei";
+	}
+
 
 	public List<Equipamento> getEquipamentos() {
 		return equipamentos;
@@ -94,5 +106,15 @@ public class CadastroSensorBean extends AbstractBean {
 	public void setSensores(List<Sensor> sensores) {
 		this.sensores = sensores;
 	}
+
+	public String getAux() {
+		return aux;
+	}
+
+	public void setAux(String aux) {
+		this.aux = aux;
+	}
+	
+	
 
 }

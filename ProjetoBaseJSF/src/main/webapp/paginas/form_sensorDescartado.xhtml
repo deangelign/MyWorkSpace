@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap.css"
+	rel="stylesheet" />
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
+	rel="stylesheet" />
+
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/bower_components/metisMenu/dist/metisMenu.min.css"
+	rel="stylesheet" />
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/css/sb-admin-2.css"
+	rel="stylesheet" />
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/bower_components/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet" />
+
+
+<link
+	href="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/bootstrap/js/bootstrap.js" />
+
+<link
+	href="${facesContext.externalContext.requestContextPath}/resources/algaworks/estilo.css" />
+
+</head>
+
+
+<h:body>
+
+
+
+	<div id="wrapper">
+
+		<h:form>
+			<nav class="navbar navbar-default navbar-static-top"
+				role="navigation" style="margin-bottom: 0">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<h:graphicImage library="algaworks" name="logo.png" width="200"
+						height="45" />
+
+				</div>
+				<!-- /.navbar-header -->
+
+				<ul class="nav navbar-top-links navbar-right">
+
+					<li class="dropdown">Olá #{dadosSessao.usuario.nome}</li>
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#"> <i class="fa fa-database"></i>
+							<i class="fa fa-caret-down"></i>
+					</a>
+						<ul class="dropdown-menu dropdown-alerts">
+							<li><h:commandLink
+									action="#{homeBean.irParaCadastroEquipamento}">
+									<div>
+										<i class="glyphicon glyphicon-hdd"></i> Cadastrar Equipamento
+									</div>
+								</h:commandLink></li>
+							<li class="divider"></li>
+							<li><h:commandLink action="#{homeBean.irParaCadastroSensor}">
+									<div>
+										<i class="fa fa-hdd-o"></i> Cadastrar Sensor
+									</div>
+								</h:commandLink></li>
+
+
+						</ul> <!-- /.dropdown-alerts --></li>
+					<!-- /.dropdown -->
+					<li class="dropdown"><h:commandLink class="list-group"
+							action="#{loginBean.sair}">
+							<i class="glyphicon glyphicon-log-out"> </i>
+						</h:commandLink></li>
+
+					<!-- /.dropdown -->
+				</ul>
+				<!-- /.navbar-top-links -->
+
+				<div class="navbar-default sidebar" role="navigation">
+					<div class="sidebar-nav navbar-collapse">
+						<ul class="nav" id="side-menu">
+							<li class="sidebar-search">
+								<div class="input-group custom-search-form">
+									<input type="text" class="form-control" placeholder="Search..." /><span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</div> <!-- /input-group -->
+							</li>
+							<li><a href="index.html"><i
+									class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
+							<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+									Charts<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="flot.html">Flot Charts</a></li>
+									<li><a href="morris.html">Morris.js Charts</a></li>
+								</ul> <!-- /.nav-second-level --></li>
+							<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>
+									Tables</a></li>
+							<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
+									Forms</a></li>
+							<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
+									Elements<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="panels-wells.html">Panels and Wells</a></li>
+									<li><a href="buttons.html">Buttons</a></li>
+									<li><a href="notifications.html">Notifications</a></li>
+									<li><a href="typography.html">Typography</a></li>
+									<li><a href="icons.html"> Icons</a></li>
+									<li><a href="grid.html">Grid</a></li>
+								</ul> <!-- /.nav-second-level --></li>
+							<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+									Multi-Level Dropdown<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="#">Second Level Item</a></li>
+									<li><a href="#">Second Level Item</a></li>
+									<li><a href="#">Third Level <span class="fa arrow"></span></a>
+										<ul class="nav nav-third-level">
+											<li><a href="#">Third Level Item</a></li>
+											<li><a href="#">Third Level Item</a></li>
+											<li><a href="#">Third Level Item</a></li>
+											<li><a href="#">Third Level Item</a></li>
+										</ul> <!-- /.nav-third-level --></li>
+								</ul> <!-- /.nav-second-level --></li>
+							<li><a href="#"><i class="fa fa-files-o fa-fw"></i>
+									Sample Pages<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="blank.html">Blank Page</a></li>
+									<li><a href="login.html">Login Page</a></li>
+								</ul> <!-- /.nav-second-level --></li>
+						</ul>
+					</div>
+					<!-- /.sidebar-collapse -->
+				</div>
+				<!-- /.navbar-static-side -->
+			</nav>
+		</h:form>
+		
+		<div id="page-wrapper">
+
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Cadastro de Sensor</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+
+			<h:form>
+
+				<div class="panel-body">
+
+					<div class="form-group">
+						<h:outputText value="Selecione o Equipamento" />
+
+						<h:selectOneMenu label="Equipamento"
+							value="#{cadastroSensorBean.equipamento.id}">
+							<f:selectItem itemLabel="Selecione" />
+							<f:selectItems value="#{cadastroSensorBean.equipamentos}"
+								var="_equipamento" itemValue="#{_equipamento.id}"
+								itemLabel="#{_equipamento.nome}" />
+								
+							<f:ajax listener="#{cadastroSensorBean.atualizarLista}" 
+								event="change" immediate="true" />
+
+						</h:selectOneMenu>
+					</div>
+	
+					<div class="form-group">
+						<h:outputText value="Digite o nome do sensor" />
+						<h:outputText value="&lt;br/&gt;" escape="false" />
+						<h:inputText id="nomeEquipamento" class="form-control"
+							pt:placeholder="Nome do Sensor"
+							value="#{cadastroSensorBean.sensor.nome}" required="true"
+							requiredMessage="Por favor digite o nome do Componente" />
+
+					</div>
+
+
+
+					<h:commandButton class="btn btn-primary" value="Salvar"
+						action="#{cadastroSensorBean.cadastrar}" />
+
+				</div>
+
+
+
+			</h:form>
+
+
+			
+				<h:dataTable value="#{cadastroSensorBean.sensores}" var="sensor"
+					id="tabelaSensores" styleClass="table table-condensed">
+
+					<h:column>
+
+						<f:facet name="header">
+							Nome
+						</f:facet>
+						
+						<h:outputText value="#{sensor.nome}" />
+
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							data
+						</f:facet>
+						
+						<h:outputText value="#{sensor.nome}" />
+					</h:column>
+
+
+				</h:dataTable>
+
+			
+
+
+
+		
+		</div>
+		<!-- /#page-wrapper -->
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+	<!-- jQuery -->
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/bower_components/jquery/dist/jquery.min.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- Metis Menu Plugin JavaScript -->
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/js/sb-admin-2.js"></script>
+
+
+
+</h:body>
+</html>

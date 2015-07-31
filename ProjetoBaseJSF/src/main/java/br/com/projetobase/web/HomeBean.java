@@ -31,6 +31,10 @@ public class HomeBean extends AbstractBean {
 	public String irParaCadastroSensor(){
 		return navegacaoPaginas.getCadastrarSensor().redirect().construir();
 	}
+	
+	public String irParaHome(){
+		return navegacaoPaginas.getHome().redirect().construir();
+	}
 
 	
 	
