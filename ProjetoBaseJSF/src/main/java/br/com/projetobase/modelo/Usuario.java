@@ -37,8 +37,14 @@ public class Usuario extends ModeloPersistencia {
 	@Column(name = "senha")
 	private String senha;
 	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval=true)
 	private List<Equipamento> equipamentos;
+	
+	@Transient
+	private boolean admin;
+	
+	@Transient
+	private boolean editable;
 	
 	public List<Equipamento> getEquipamentos() {
 		return equipamentos;
@@ -102,6 +108,25 @@ public class Usuario extends ModeloPersistencia {
 	public void setConfirmarSenha(String confirmarSenha) {
 		this.confirmarSenha = confirmarSenha;
 	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	
+	
+	
 	
 	
 

@@ -21,7 +21,6 @@ public class CadastroUsuarioBean extends AbstractBean {
 
 	public void cadastrar() {
 
-		
 		 usuarioService.salvar(usuario);
 		 
 	}

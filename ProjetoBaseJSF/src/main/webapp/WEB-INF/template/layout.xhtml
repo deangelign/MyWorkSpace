@@ -49,6 +49,8 @@
 
 
 <h:body>
+
+
 	<header>
 
 		<div id="wrapper">
@@ -98,25 +100,32 @@
 								</li>
 
 
-								<li><h:commandLink
-										action="#{homeBean.irParaHome}">
+								<li><h:commandLink action="#{homeBean.irParaHome}">
 										<i class="fa fa-home"></i>
 											Home
-									</h:commandLink>
-								</li>
-								
+									</h:commandLink></li>
+
 
 								<li><h:commandLink
 										action="#{homeBean.irParaCadastroEquipamento}">
 										<i class="glyphicon glyphicon-hdd"></i>
-											Cadastrar Equipamento
+											Gerenciar Equipamentos
 									</h:commandLink></li>
 
 								<li><h:commandLink
 										action="#{homeBean.irParaCadastroSensor}">
 										<i class="fa fa-hdd-o"></i>
-										Cadastrar Sensor
+										Gerenciar Sensores
 									</h:commandLink></li>
+
+								<li><h:commandLink
+										action="#{homeBean.irParaGerenciamentoUsuarios()}" 
+										rendered = "#{dadosSessao.usuario.admin}"
+										>
+										<i class="glyphicon glyphicon-user"></i>
+										Gerencia de Usuarios
+									</h:commandLink></li>
+
 
 							</ul>
 						</div>

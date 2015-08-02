@@ -92,6 +92,7 @@ public class NavegacaoPaginasController {
     private final Pagina cadastrarEquipamento = new Pagina("/paginas/form_equipamento");
     private final Pagina cadastrarSensor = new Pagina("/paginas/form_sensor");
     private final Pagina cadastrarUsuario = new Pagina("/form_usuario");
+    private final Pagina gerenciamentoUsuario = new Pagina("/paginas/manager/manager_user");
 
 	public Pagina getLogin() {
 		return login;
@@ -101,6 +102,11 @@ public class NavegacaoPaginasController {
 	public Pagina getCadastrarUsuario() {
 		return cadastrarUsuario;
 	}
+	
+	public Pagina getGerencioamentoUsuario() {
+		return gerenciamentoUsuario;
+	}
+
 	
 	public Pagina getCadastrarEquipamento() {
 		return cadastrarEquipamento;

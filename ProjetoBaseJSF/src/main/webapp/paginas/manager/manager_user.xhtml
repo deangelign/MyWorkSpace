@@ -1,0 +1,159 @@
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+	<ui:define name="titulo">Usuarios</ui:define>
+
+	<ui:define name="corpo">
+
+		<f:metadata>
+			<f:viewAction action="#{managerUserBean.atualizarLista()}" />
+		</f:metadata>
+
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">Gerenciamento de Usuarios</h1>
+
+					<h:form>
+						<div class="panel-body">
+							<h4 class="page-header">Cadastro</h4>
+
+							<h:form id="formLogin">
+								<div class="form-group">
+									<h:inputText class="form-control"
+										pt:placeholder="Nome do usuario"
+										value="#{managerUserBean.usuario.nome}" required="true" />
+								</div>
+
+								<div class="form-group">
+									<h:inputText class="form-control" id="email"
+										pt:placeholder="Email"
+										value="#{managerUserBean.usuario.email}" required="true"
+										requiredMessage="Por favor digite um Email">
+
+										<f:validator validatorId="emailValidator" />
+									</h:inputText>
+
+								</div>
+								<h:message for="email" style="color: red;" />
+
+								<div class="form-group">
+									<h:inputSecret id="password" class="form-control"
+										pt:placeholder="Senha"
+										value="#{managerUserBean.usuario.senha}" required="true"
+										requiredMessage="Por favor digite a senha">
+
+										<f:validator validatorId="passwordValidator" />
+										<f:attribute name="confirmPassword" value="#{confirmPassword}" />
+
+									</h:inputSecret>
+									<h:message for="password" style="color: red;" />
+								</div>
+
+								<div class="form-group">
+									<h:inputSecret class="form-control" id="confirmPassword"
+										pt:placeholder="Digite a senha novamente"
+										binding="#{confirmPassword}"
+										value="#{managerUserBean.usuario.confirmarSenha}"
+										required="true" requiredMessage="Por favor confirme a senha" />
+								</div>
+								<h:message for="confirmPassword" style="color: red;" />
+
+								<h:commandButton value="Cadastrar"
+									action="#{managerUserBean.cadastrar}" class="btn btn-primary" />
+							</h:form>
+
+
+
+
+						</div>
+					</h:form>
+
+
+					<h:form id="tabela">
+						<h4 class="page-header">Usuarios</h4>
+						<h:dataTable value="#{managerUserBean.usuarios}" var="_usuario"
+							id="tabelaUsuarios" styleClass="table table-condensed">
+
+							<h:column>
+
+								<f:facet name="header"> Nome </f:facet>
+
+								<h:inputText value="#{_usuario.nome}" size="10"
+									rendered="#{_usuario.editable}" />
+								<h:outputText value="#{_usuario.nome}"
+									rendered="#{not _usuario.editable}" />
+
+							</h:column>
+
+							<h:column>
+
+								<f:facet name="header"> Email </f:facet>
+
+								<h:inputText value="#{_usuario.email}" size="10"
+									rendered="#{_usuario.editable}">
+									<f:validator validatorId="emailValidator" />
+								</h:inputText>
+
+								<h:outputText value="#{_usuario.email}"
+									rendered="#{not _usuario.editable}" />
+
+							</h:column>
+
+							<h:column>
+
+								<f:facet name="header"> senha </f:facet>
+
+								<h:inputSecret value="#{_usuario.senha}" size="10"
+									rendered="#{_usuario.editable}">
+									<f:validator validatorId="passwordValidator" />
+								</h:inputSecret>
+
+								<h:outputText value="#{_usuario.senha}"
+									rendered="#{not _usuario.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+
+								<f:facet name="header">Action</f:facet>
+
+								<h:commandLink value="Editar"
+									action="#{managerUserBean.editAction(_usuario)}"
+									rendered="#{not _usuario.editable}">
+
+								</h:commandLink>
+
+								<h:outputText value="&#160;" />
+
+								<h:commandLink value="Deletar"
+									action="#{managerUserBean.deletarAction(_usuario)}">
+
+								</h:commandLink>
+
+
+
+							</h:column>
+
+
+						</h:dataTable>
+
+						<h:commandButton value="Salvar alteracoes"
+							action="#{managerUserBean.salvarAlteracoesAction}" />
+
+					</h:form>
+
+				</div>
+				<!-- /.col-lg-12 -->
+
+			</div>
+		</div>
+
+	</ui:define>
+
+</ui:composition>

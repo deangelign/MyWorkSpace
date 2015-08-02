@@ -1,5 +1,7 @@
 package br.com.projetobase.dao.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Query;
 
 import br.com.projetobase.arq.dao.HibernateDAO;
@@ -28,6 +30,19 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 		
 		
 		return true;
+	}
+
+	@Override
+	public List<Usuario> buscarTodosUsuarios() {
+		try {
+			String hql = "FROM Usuario";
+			Query query = getSession().createQuery(hql);
+			
+			return (List<Usuario>) query.list();
+		} catch (Exception hibernateException) {
+			throw new DAOException(hibernateException);
+		}
+
 	}
 
 }

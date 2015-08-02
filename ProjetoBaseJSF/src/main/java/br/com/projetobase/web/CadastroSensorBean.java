@@ -34,9 +34,6 @@ public class CadastroSensorBean extends AbstractBean {
 
 	@Inject
 	private SensorService sensorService;
-
-	@Inject
-	private DadosSessao dadosSessao;
 	
 	@Inject
 	private SensorHibernateDAO sensorHibernateDAO;
@@ -46,6 +43,28 @@ public class CadastroSensorBean extends AbstractBean {
 	public CadastroSensorBean() {
 	}
 
+	public String editAction(Sensor sensor){
+		sensor.setEditable(true);
+		return null;
+	}
+	
+	public String deletarAction(Sensor sensor){
+		sensorService.deletar(sensor);
+		atualizarLista();
+		return null;
+	}
+	
+	public String salvarAlteracoesAction(){
+		this.updateSensores();
+		atualizarLista();
+		return null;
+	}
+	
+	public void updateSensores(){
+		sensorService.atualizarLista(sensores);
+	}
+
+	
 	@Inject
 	public CadastroSensorBean(EquipamentoHibernateDAO equipamentoHibernateDAO,
 			DadosSessao dadosSessao) {
@@ -58,6 +77,9 @@ public class CadastroSensorBean extends AbstractBean {
 		sensor.setEquipamento(equipamento);
 		sensor.setDataCadastro(new Date());
 		sensorService.salvar(sensor);
+		
+		atualizarLista();
+		
 	}
 
 	public Sensor getSensor() {
@@ -77,6 +99,17 @@ public class CadastroSensorBean extends AbstractBean {
 			sensores.clear();
 		}
 	}
+	
+	public void atualizarLista() {
+		
+		if (equipamento.getId() != null) {
+			this.sensores = sensorHibernateDAO
+					.buscarSensoresEquipamento(equipamento.getId());
+		}else{
+			sensores.clear();
+		}
+	}
+
 	
 	public void teste(AjaxBehaviorEvent e) {
 		this.aux = this.aux + "mudei";
@@ -114,6 +147,8 @@ public class CadastroSensorBean extends AbstractBean {
 	public void setAux(String aux) {
 		this.aux = aux;
 	}
+	
+
 	
 	
 

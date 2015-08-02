@@ -4,6 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.projetobase.arq.util.DadosSessao;
 import br.com.projetobase.modelo.Usuario;
 import br.com.projetobase.web.service.UsuarioService;
 
@@ -16,9 +17,15 @@ public class HomeBean extends AbstractBean {
 	@Inject
 	private UsuarioService usuarioService;
 	
+	@Inject
+	private DadosSessao dadosSessao;
+	
+
+	
 	public void testeHibernate() {
 		
 	}
+	
 	
 	public String irParaLogin() {
 		return navegacaoPaginas.getLogin().redirect().construir();
@@ -35,6 +42,16 @@ public class HomeBean extends AbstractBean {
 	public String irParaHome(){
 		return navegacaoPaginas.getHome().redirect().construir();
 	}
+
+	public String irParaGerenciamentoUsuarios() {
+		return navegacaoPaginas.getGerencioamentoUsuario().redirect().construir();
+	}
+
+
+	
+	
+	
+	
 
 	
 	

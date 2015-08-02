@@ -6,17 +6,18 @@ import org.hibernate.Query;
 
 import br.com.projetobase.arq.dao.HibernateDAO;
 import br.com.projetobase.arq.dao.excecoes.DAOException;
-import br.com.projetobase.dao.EquipamentoDAO;
 import br.com.projetobase.dao.SensorDAO;
-import br.com.projetobase.modelo.Equipamento;
 import br.com.projetobase.modelo.Sensor;
 
-public class SensorHibernateDAO extends HibernateDAO<Sensor> implements SensorDAO{
+public class SensorHibernateDAO extends HibernateDAO<Sensor> implements
+		SensorDAO {
 
+	private static final long serialVersionUID = 1L;
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Sensor> buscarSensoresEquipamento(long equipamentoId) {
-		
+
 		try {
 			String hql = "FROM Sensor WHERE equipamento.id = :idEquipamento";
 			Query query = getSession().createQuery(hql);
@@ -26,7 +27,6 @@ public class SensorHibernateDAO extends HibernateDAO<Sensor> implements SensorDA
 			throw new DAOException(hibernateException);
 		}
 
-		
 	}
-	
+
 }

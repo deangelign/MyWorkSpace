@@ -1,6 +1,7 @@
 package br.com.projetobase.web.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,6 +25,32 @@ public class SensorService implements Serializable {
 			sensorDAO.atualizar(sensor);
 		}
 	}
+	
+	@Transactional
+	public void atualizarLista(List<Sensor> sensores) {
+		
+		for(Sensor sensor: sensores){
+			if(sensor.isEditable()){
+				sensor.setEditable(false);
+				sensorDAO.atualizar(sensor);
+			}
+			
+			
+		}
+		
+	}
+	
+	@Transactional
+	public void deletar(Sensor sensor){
+		
+		if (sensor.getId() != null && sensor.getId() != 0){
+			
+			sensorDAO.remover(sensor);
+			
+		}
+		
+	}
+	
 
 	
 }

@@ -30,7 +30,12 @@ public class LoginBean extends AbstractBean {
 		
 		if (usuario != null) {
 			if (this.usuario.getSenha().equals(usuario.getSenha())) {
+				
+				if(usuario.getId() == 0){
+					usuario.setAdmin(true);
+				}
 				dadosSessao.adicionarUsuario(usuario);
+				
 				return navegacaoPaginas.getHome().redirect().construir();
 			} else {
 				gerenciadorDeMensagens.addMensagemErro(gerenciadorDeMensagens.getMensagem("usuario_incorreto"));

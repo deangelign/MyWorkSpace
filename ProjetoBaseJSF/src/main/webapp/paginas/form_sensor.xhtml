@@ -12,11 +12,11 @@
 		<div id="page-wrapper">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">Cadastro de Sensor</h1>
+					<h1 class="page-header">Gerenciar Sensores</h1>
 
 					<h:form>
 						<div class="form-group">
-
+							<h4 class="page-header">Cadastro</h4>
 							<label for="caixaSelecaoEquipamento">Selecione um
 								equipamento </label>
 							<h:outputText value="&lt;br/&gt;" escape="false" />
@@ -31,14 +31,13 @@
 
 								<f:ajax listener="#{cadastroSensorBean.atualizarLista}"
 									event="change" execute="@this caixaSelecaoEquipamento"
-									render="tabelaSensores" />
+									render="tabela" />
 
 
 							</h:selectOneMenu>
 						</div>
 
 						<div class="form-group">
-							<h:outputText value="Digite o nome do sensor" />
 							<h:outputText value="&lt;br/&gt;" escape="false" />
 							<h:inputText id="nomeSensor" class="form-control"
 								pt:placeholder="Nome do Sensor"
@@ -51,53 +50,79 @@
 
 						<div class="form-group">
 
-							<h:commandButton class="btn btn-primary"
-								value="#{cadastroSensorBean.aux}"
-								action="#{cadastroSensorBean.cadastrar}" id="botaoCadastrar" />
+							<h:commandButton class="btn btn-primary" value="Salvar"
+								action="#{cadastroSensorBean.cadastrar}" id="botaoCadastrar"
+								process="@this" update="tabelaSensores">
+
+								
+
+
+							</h:commandButton>
 						</div>
 
 
 					</h:form>
-
-
-					<h:dataTable value="#{cadastroSensorBean.sensores}" var="_sensor"
-						id="tabelaSensores" styleClass="table table-condensed">
-
-						<h:column>
-
-							<f:facet name="header">
-								Nome
-							</f:facet>
-							
-							<h:inputText value="#{_sensor.nome}" size="10" rendered="#{_sensor.editable}" />
-							<h:outputText value="#{_sensor.nome}" rendered="#{not _sensor.editable}" />
-
-						</h:column>
-
-						<h:column>
-
-							<f:facet name="header">
-								data
-							</f:facet>
-
-							<h:outputText value="#{_sensor.dataCadastro}">
-								<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-							</h:outputText>
-
-						</h:column>
-
 					
-						<h:column>
 
-							<f:facet name="header">Action</f:facet>
+					<h:form id="tabela">
+						<h4 class="page-header">Sensores</h4>
+						<h:dataTable value="#{cadastroSensorBean.sensores}" var="_sensor"
+							id="tabelaSensores" styleClass="table table-condensed">
 
-							<h:commandLink value="Edit" action="#{sensor.editAction}"
-								rendered="#{not o.editable}" />
+							<h:column>
 
-						</h:column>
+								<f:facet name="header"> Nome </f:facet>
 
-					</h:dataTable>
+								<h:inputText value="#{_sensor.nome}" size="10"
+									rendered="#{_sensor.editable}" />
+								<h:outputText value="#{_sensor.nome}"
+									rendered="#{not _sensor.editable}" />
 
+
+							</h:column>
+
+							<h:column>
+
+								<f:facet name="header">data</f:facet>
+
+
+								<h:inputText value="#{_sensor.dataCadastro}" size="10"
+									rendered="#{_sensor.editable}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:inputText>
+
+								<h:outputText value="#{_sensor.dataCadastro}"
+									rendered="#{not _sensor.editable}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+
+							</h:column>
+
+
+							<h:column>
+
+								<f:facet name="header"></f:facet>
+
+								<h:commandLink value="Editar"
+									action="#{cadastroSensorBean.editAction(_sensor)}"
+									rendered="#{not _sensor.editable}">
+									
+								</h:commandLink>
+
+								<h:outputText value="&#160;" />
+
+								<h:commandLink value="Deletar"
+									action="#{cadastroSensorBean.deletarAction(_sensor)}">
+									
+								</h:commandLink>
+
+							</h:column>
+
+						</h:dataTable>
+
+						<h:commandButton value="Salvar alteracoes"
+							action="#{cadastroSensorBean.salvarAlteracoesAction}" />
+					</h:form>
 
 
 

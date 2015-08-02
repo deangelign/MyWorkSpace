@@ -23,6 +23,8 @@ import br.com.projetobase.arq.modelo.ModeloPersistencia;
 @Table(name = "sensor")
 public class Sensor extends ModeloPersistencia{
 
+	private static final long serialVersionUID = 1L;
+	
 	@NotEmpty
 	@Column(name = "nome", nullable = false)
 	private String nome;
