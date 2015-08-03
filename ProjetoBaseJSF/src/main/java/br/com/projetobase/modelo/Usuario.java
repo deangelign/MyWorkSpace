@@ -2,6 +2,7 @@ package br.com.projetobase.modelo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class Usuario extends ModeloPersistencia {
 	@Column(name = "senha")
 	private String senha;
 	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval=true)
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Equipamento> equipamentos;
 	
 	@Transient

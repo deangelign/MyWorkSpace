@@ -3,6 +3,7 @@ package br.com.projetobase.modelo;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Equipamento extends ModeloPersistencia{
 	private Usuario usuario;
 	
 	
-	@OneToMany(mappedBy = "equipamento", fetch = FetchType.LAZY, orphanRemoval=true)
+	@OneToMany(mappedBy = "equipamento", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Sensor> sensores;
 	
 	@Temporal(TemporalType.DATE)
