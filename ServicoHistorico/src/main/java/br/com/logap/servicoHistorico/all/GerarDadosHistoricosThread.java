@@ -7,42 +7,52 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
 
-public class GerarDadosHistoricos {
+public class GerarDadosHistoricosThread implements Runnable {
 
-	public static void main(String args[]) {
-
-		 final Logger logger;
+	private  final static Logger logger = Logger.getLogger(GerarDadosHistoricosThread.class);
+	
+	private Connection con = new ConnectionFactory().getConnection();
+	private  List<Historico> historicos;
+	
+	public void run() {
+		if(logger.isDebugEnabled()){
+			logger.debug("Modo debug");
+		}
 		
-		Connection con = new ConnectionFactory().getConnection();
-		criarTabelaNoBanco(con);
-		List<Historico> historicos = pegarIdSensores(con);
-		inserirNaTabela(con, historicos);
+		logger.info("criando tabela no banco......");
+		criarTabelaNoBanco();
+		logger.info("tabela criada");
+		
+		logger.info("Consultando id dos sensores......");
+		setHistoricos(pegarIdSensores());
+		logger.info("Consulta realizada com sucesso");
+
+		logger.info("Inserindo dados na tabela historico.........");
+		inserirNaTabela(getHistoricos());
+		logger.info("operacao realizada com sucesso");
+		
+		Map<Long, Long> mapSensores = new HashMap<Long, Long>();
 	}
-
-	private static void inserirNaTabela(Connection con,
-			List<Historico> historicos) {
-
-		
+	
+	public void inserirNaTabela(List<Historico> historicos) {
 		String sql;
 		
 		try {
 			PreparedStatement stmt = null;
-			sql = "insert into historico "
-					+ "(valor,tempo,id_sensor)" + " values (?,?,?)";
+			sql = "insert into historico (valor,tempo,id_sensor)" + " values (?,?,?)";
 			stmt = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			
-			
 			for (int i = 0; i < historicos.size(); i++) {
-				
-				System.out.println(i);
 				stmt.setDouble(1, historicos.get(i).getValor());
 				stmt.setTimestamp(2, historicos.get(i).getTempo());
 				stmt.setLong(3, historicos.get(i).getId_sensor());
 				stmt.execute();
-
 			}
 			
 			if (stmt != null) {
@@ -58,7 +68,7 @@ public class GerarDadosHistoricos {
 
 	}
 
-	private static List<Historico> pegarIdSensores(Connection con) {
+	public List<Historico> pegarIdSensores() {
 		String sql = "select id from sensor";
 		PreparedStatement stmt = null;
 		List<Historico> historicos = new ArrayList<Historico>();
@@ -98,7 +108,7 @@ public class GerarDadosHistoricos {
 
 	}
 
-	private static void criarTabelaNoBanco(Connection con) {
+	public void criarTabelaNoBanco() {
 		String sql = "create table IF NOT EXISTS historico (id SERIAL, valor DOUBLE PRECISION,"
 				+ "tempo TIMESTAMP, id_sensor BIGINT, PRIMARY KEY (id) );";
 
@@ -117,5 +127,15 @@ public class GerarDadosHistoricos {
 			}
 		}
 	}
+	
+	public List<Historico> getHistoricos() {
+		return historicos;
+	}
+
+	public void setHistoricos(List<Historico> historicos) {
+		this.historicos = historicos;
+	}
+
+
 
 }
