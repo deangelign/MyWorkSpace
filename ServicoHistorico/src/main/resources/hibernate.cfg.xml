@@ -4,6 +4,7 @@
 
 <hibernate-configuration>
 	<session-factory>
+	
 		<property name="show_sql">true</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>

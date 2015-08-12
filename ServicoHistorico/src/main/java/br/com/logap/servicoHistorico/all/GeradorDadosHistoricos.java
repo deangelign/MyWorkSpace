@@ -12,45 +12,40 @@ import org.apache.log4j.Logger;
 
 public class GeradorDadosHistoricos {
 
-	static Datasource ds;
-	private  final static Logger loggerMain = Logger.getLogger(GeradorDadosHistoricos.class);
-	
-	public GeradorDadosHistoricos() throws IOException, SQLException,
-			PropertyVetoException {
-		ds = Datasource.getInstance();
+	private static MyDatasource dataSource;
+	private final static Logger loggerMain = Logger.getLogger(GeradorDadosHistoricos.class);
+
+	public GeradorDadosHistoricos() throws IOException, SQLException, PropertyVetoException {
+		dataSource = MyDatasource.getInstance();
 	}
 
 	public static void main(String args[]) throws SQLException {
 		loggerMain.info("criando tabela no banco......");
 		criarTabelaNoBanco();
 		loggerMain.info("tabela criada");
-		
-		
-		GeradorDadosHistoricosThread thread = new GeradorDadosHistoricosThread();
-		ScheduledThreadPoolExecutor scheduledThread = new ScheduledThreadPoolExecutor(
-				50);
-		scheduledThread.scheduleWithFixedDelay(thread, 0, 30, TimeUnit.SECONDS);
+
+		 ThreadSensorManager treSensorManager = new ThreadSensorManager();
+		 ScheduledThreadPoolExecutor scheduledThread = new ScheduledThreadPoolExecutor(50);
+		 scheduledThread.scheduleWithFixedDelay(treSensorManager, 0, 120, TimeUnit.SECONDS);
+
 	}
 
 	public static void criarTabelaNoBanco() throws SQLException {
-		Connection con = ds.getConnection();
 		String sql = "create table IF NOT EXISTS historico (id SERIAL, valor DOUBLE PRECISION,"
 				+ "tempo TIMESTAMP, id_sensor BIGINT, PRIMARY KEY (id) );";
 
 		PreparedStatement stmt = null;
 		try {
+			dataSource = MyDatasource.getInstance();
+			Connection con = dataSource.getConnection();
+			
 			stmt = con.prepareStatement(sql);
-		} catch (SQLException e) {
+			stmt.close();
+			con.close();
+		} catch (SQLException | IOException | PropertyVetoException e) {
 			e.printStackTrace();
 		} finally {
-
-			try {
-				stmt.close();
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
+			
 		}
 	}
 

@@ -8,21 +8,18 @@ import java.sql.SQLException;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 
-public class Datasource {
+public class MyDatasource {
 
 	private ComboPooledDataSource cpds;
-	private static Datasource datasource;
-	//private static Logger log = Logger.getLogger(Datasource.class);
+	private static MyDatasource datasource;
 
-	private Datasource() throws IOException, SQLException,
-			PropertyVetoException {
-
+	private MyDatasource() throws IOException, SQLException, PropertyVetoException {
 		cpds = new ComboPooledDataSource();
-		cpds.setDriverClass("org.postgresql.Driver"); // loads the jdbc driver
+		cpds.setDriverClass("org.postgresql.Driver"); 
 		cpds.setJdbcUrl("jdbc:postgresql://localhost/teste");
 		cpds.setUser("postgres");
-		cpds.setPassword("postgres");
-
+		cpds.setPassword("123");
+		
 		cpds.setInitialPoolSize(10);
 		cpds.setAcquireIncrement(5);
 		cpds.setMinPoolSize(10);
@@ -31,15 +28,13 @@ public class Datasource {
 
 	}
 
-	public static Datasource getInstance() throws IOException, SQLException,
-			PropertyVetoException {
+	public static MyDatasource getInstance() throws IOException, SQLException, PropertyVetoException {
 		if (datasource == null) {
-			datasource = new Datasource();
+			datasource = new MyDatasource();
 			return datasource;
 		} else {
 			return datasource;
 		}
-
 	}
 
 	public Connection getConnection() throws SQLException {
