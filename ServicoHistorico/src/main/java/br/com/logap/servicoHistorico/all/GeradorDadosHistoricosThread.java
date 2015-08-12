@@ -13,22 +13,20 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-public class GerarDadosHistoricosThread implements Runnable {
+public class GeradorDadosHistoricosThread implements Runnable {
 
-	private  final static Logger logger = Logger.getLogger(GerarDadosHistoricosThread.class);
+	private  final static Logger logger = Logger.getLogger(GeradorDadosHistoricosThread.class);
 	
 	private Connection con = new ConnectionFactory().getConnection();
 	private  List<Historico> historicos;
+	
 	
 	public void run() {
 		if(logger.isDebugEnabled()){
 			logger.debug("Modo debug");
 		}
 		
-		logger.info("criando tabela no banco......");
-		criarTabelaNoBanco();
-		logger.info("tabela criada");
-		
+
 		logger.info("Consultando id dos sensores......");
 		setHistoricos(pegarIdSensores());
 		logger.info("Consulta realizada com sucesso");
@@ -38,6 +36,17 @@ public class GerarDadosHistoricosThread implements Runnable {
 		logger.info("operacao realizada com sucesso");
 		
 		Map<Long, Long> mapSensores = new HashMap<Long, Long>();
+	}
+	
+	protected void finalize (){
+		try {
+			logger.info("fechando a conexao......");
+			con.close();
+			logger.info("conexao fechada");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void inserirNaTabela(List<Historico> historicos) {
@@ -108,25 +117,6 @@ public class GerarDadosHistoricosThread implements Runnable {
 
 	}
 
-	public void criarTabelaNoBanco() {
-		String sql = "create table IF NOT EXISTS historico (id SERIAL, valor DOUBLE PRECISION,"
-				+ "tempo TIMESTAMP, id_sensor BIGINT, PRIMARY KEY (id) );";
-
-		PreparedStatement stmt = null;
-		try {
-			stmt = con.prepareStatement(sql);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-	}
 	
 	public List<Historico> getHistoricos() {
 		return historicos;
