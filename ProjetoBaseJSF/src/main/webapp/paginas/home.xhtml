@@ -7,7 +7,21 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
+
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
 	<ui:define name="titulo">minha home</ui:define>
+
+	<script>
+		const
+		ctx = "${facesContext.externalContext.requestContextPath}";
+	</script>
+
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/grafico/grafico-util.js"></script>
+
+
 
 	<ui:define name="corpo">
 		<div id="page-wrapper">
@@ -16,30 +30,79 @@
 					<h1 class="page-header">Home</h1>
 
 					<h:form class="form-inline">
-							<h4 class="page-header">Buscar por Periodo</h4>
-							<div class="form-group">
-								<label for="dataInicio">De</label> 
-								<input type="date" class="form-control" id="dataInicio" name="dataInicio"/>
-							</div>
-							
-							<div class="form-group">
-								<label for="dataFim">Ate</label> 
-								<input type="date" class="form-control" id="dataFim" name="dataFim"/>
-							</div>
-						
-						<div class="form-group">
-							<h:commandButton class="btn btn-primary" value="Buscar" action="#{homeBean.testeHibernate()}"/>
-							
+
+						<div>
+							<label for="caixaSelecaoEquipamentoHome1">Selecione um
+								equipamento </label>
+							<h:outputText value="&lt;br/&gt;" escape="false" />
+
+							<h:selectOneMenu label="Equipamento"
+								id="caixaSelecaoEquipamentoHome1"
+								value="#{cadastroSensorBean.equipamento.id}"
+								class="btn btn-default dropdown-toggle">
+								<f:selectItem itemLabel="Selecione" />
+								<f:selectItems value="#{cadastroSensorBean.equipamentos}"
+									var="_equipamento" itemValue="#{_equipamento.id}"
+									itemLabel="#{_equipamento.nome}" />
+
+								<f:ajax listener="#{cadastroSensorBean.atualizarLista}"
+									event="change" execute="@this caixaSelecaoEquipamento"
+									render="caixaSelecaoEquipamentoHome2" />
+
+							</h:selectOneMenu>
 						</div>
-							
-						
+
+
+						<div>
+							<h:outputText value="&lt;br/&gt;" escape="false" />
+							<label for="caixaSelecaoEquipamentoHome2">Selecione um
+								Sensor </label>
+							<h:outputText value="&lt;br/&gt;" escape="false" />
+
+							<h:selectOneMenu label="Sensor" id="caixaSelecaoEquipamentoHome2"
+								value="#{cadastroSensorBean.sensor.id}"
+								class="btn btn-default dropdown-toggle">
+								<f:selectItem itemLabel="Selecione" />
+								<f:selectItems value="#{cadastroSensorBean.sensores}"
+									var="_sensor" itemValue="#{_sensor.id}"
+									itemLabel="#{_sensor.nome}" />
+
+
+							</h:selectOneMenu>
+						</div>
+
+
+
+
+						<h4 class="page-header">Buscar por Periodo</h4>
+						<div class="form-group">
+							<label for="dataInicio">De</label> <input type="date"
+								class="form-control" id="dataInicio" name="dataInicio" />
+						</div>
+
+						<div class="form-group">
+							<label for="dataFim">Ate</label> <input type="date"
+								class="form-control" id="dataFim" name="dataFim" />
+						</div>
+
+						<div class="form-group">
+							<h:commandLink class="btn btn-primary" value="Buscar"
+								onclick="buscarPontos()" />
+
+						</div>
+
 					</h:form>
 
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
+
+			<div id="grafico" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 		</div>
 
 	</ui:define>
+	
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/grafico/graficoTeste.js"></script>
 
 </ui:composition>

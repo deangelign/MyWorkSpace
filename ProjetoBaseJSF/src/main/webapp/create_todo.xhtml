@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Form to create a new resource</title>
+</head>
+
+<body>
+
+	<h:form class="form-inline">
+		<h4 class="page-header">Buscar por Periodo</h4>
+		<div class="form-group">
+			<label for="dataInicio">De</label> <input type="date"
+				class="form-control" id="dataInicio" name="dataInicio" />
+		</div>
+
+		<div class="form-group">
+			<label for="dataFim">Ate</label> <input type="date"
+				class="form-control" id="dataFim" name="dataFim" />
+		</div>
+
+		<div class="form-group">
+			<h:commandButton class="btn btn-primary" value="Buscar"
+				action="#{homeBean.testeHibernate()}" />
+
+		</div>
+
+
+	</h:form>
+
+
+</body>
+
+
+</html>
