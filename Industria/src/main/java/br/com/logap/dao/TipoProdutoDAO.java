@@ -1,58 +1,59 @@
 package br.com.logap.dao;
 
 import java.util.List;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.logap.modelo.Cliente;
 
-public class ClienteDAO extends DAO{
-	
-	public ClienteDAO(){
+import br.com.logap.modelo.TipoProduto;
+
+public class TipoProdutoDAO extends DAO{
+	public TipoProdutoDAO(){
 		super();
 	}
-	public void inserir(Cliente cliente){
+	public void inserir(TipoProduto tipoProduto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(cliente);
+		session.saveOrUpdate(tipoProduto);
 		transaction.commit();
 		session.close();		
 	}
 	
-	public void deletar(Cliente cliente){
+	public void deletar(TipoProduto tipoProduto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.delete(cliente);
+		session.delete(tipoProduto);
 		transaction.commit();
 		session.close();
 	}
 	
-	public void Modificar(Cliente cliente){
+	public void Modificar(TipoProduto tipoProduto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(cliente);
+		session.saveOrUpdate(tipoProduto);
 		transaction.commit();
 		session.close();
 	}
 	
-	public List<Cliente> buscarTodos(){
-		String HQL = "From Cliente";
+	public List<TipoProduto> buscarTodos(){
+		String HQL = "From TipoProduto";
 		Session session = SessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		List<Cliente>clientes = query.list();
-		return clientes;
+		List<TipoProduto>tipoProduto = query.list();
+		return tipoProduto;
 	}
 	
-	public Cliente buscarPorID(long clienteID){
-		String HQL = "From Cliente v where v.id = :cliente_id";
-		
+	public TipoProduto buscarPorID(long tipoProdutoID){
+		String HQL = "From TipoProduto v where v.id = :tipoProduto_id";
 		Session session = SessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		query.setLong("cliente_id", clienteID);
+		query.setLong("tipoProduto_id", tipoProdutoID);
 		
-		return (Cliente) query.uniqueResult();		
+		return (TipoProduto) query.uniqueResult();		
 	}
+
 }
