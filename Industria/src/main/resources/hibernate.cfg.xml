@@ -14,8 +14,18 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost/industria</property>
         <property name="hibernate.hbm2ddl.auto">create-drop</property>
         
+        <mapping class="br.com.logap.modelo.Almoxarifado"/>
+        <mapping class="br.com.logap.modelo.Cliente"/>
+        <mapping class="br.com.logap.modelo.Entrega"/>
+        <mapping class="br.com.logap.modelo.Exclusividade"/>
+        <mapping class="br.com.logap.modelo.Fabricante"/>
+        <mapping class="br.com.logap.modelo.Fornecedor"/>
+        <mapping class="br.com.logap.modelo.Motorista"/>
+        <mapping class="br.com.logap.modelo.Produto"/>
+        <mapping class="br.com.logap.modelo.TipoProduto"/>
+        <mapping class="br.com.logap.modelo.Veiculo"/>
         <mapping class="br.com.logap.modelo.Venda"/>
-         <mapping class="br.com.logap.modelo.Vendedor"/>
-       
+        <mapping class="br.com.logap.modelo.Vendedor"/>
+        
 	</session-factory>
 </hibernate-configuration>
