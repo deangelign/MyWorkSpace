@@ -5,58 +5,57 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.logap.modelo.Vendedor;
 
-public class VendedorDAO extends DAO{
+import br.com.logap.modelo.Fornecedor;
+
+public class FornecedorDAO extends DAO{
 	
-	public VendedorDAO(){
+	public FornecedorDAO(){
 		super();		
 	}
-			
-	public void inserir(Vendedor vendedor){
+	
+	public void inserir(Fornecedor fornecedor){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.saveOrUpdate(fornecedor);
 		transaction.commit();
-		session.close();
+		session.close();		
 	}
-		
-	public void deletar(Vendedor vendedor){
+	
+	public void deletar(Fornecedor fornecedor){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.delete(vendedor);
+		session.delete(fornecedor);
 		transaction.commit();
 		session.close();
 	}
 	
-	public void Modificar(Vendedor vendedor){
+	public void Modificar(Fornecedor fornecedor){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.saveOrUpdate(fornecedor);
 		transaction.commit();
 		session.close();
 	}
 	
-	public List<Vendedor> buscarTodos(){
-		
-		String HQL = "From Vendedor";
+	public List<Fornecedor> buscarTodos(){
+		String HQL = "From Fornecedor";
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		List<Vendedor>vendedores = query.list();
-		return vendedores;
-		
+		List<Fornecedor>fornecedores = query.list();
+		return fornecedores;
 	}
 	
-	public Vendedor buscarPorID(long vendedorID){
-		String HQL = "From Vendedor v where v.id = :vendedor_id";
+	public Fornecedor buscarPorID(long fornecedorID){
+		String HQL = "From Fornecedor v where v.id = :fornecedor_id";
 		
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		query.setLong("vendedor_id", vendedorID);
+		query.setLong("fornecedor_id", fornecedorID);
 		
-		return (Vendedor) query.uniqueResult();		
-	}	
+		return (Fornecedor) query.uniqueResult();
+	}
 }

@@ -1,62 +1,58 @@
 package br.com.logap.dao;
 
 import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.logap.modelo.Vendedor;
+import br.com.logap.modelo.Cliente;
 
-public class VendedorDAO extends DAO{
+public class ClienteDAO extends DAO{
 	
-	public VendedorDAO(){
-		super();		
+	public ClienteDAO(){
+		super();
 	}
-			
-	public void inserir(Vendedor vendedor){
+	public void inserir(Cliente cliente){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.saveOrUpdate(cliente);
 		transaction.commit();
-		session.close();
-	}
-		
-	public void deletar(Vendedor vendedor){
-		Session session = sessionManager.getSession();
-		Transaction transaction = session.beginTransaction();
-		
-		session.delete(vendedor);
-		transaction.commit();
-		session.close();
+		session.close();		
 	}
 	
-	public void Modificar(Vendedor vendedor){
+	public void deletar(Cliente cliente){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.delete(cliente);
 		transaction.commit();
 		session.close();
 	}
 	
-	public List<Vendedor> buscarTodos(){
+	public void Modificar(Cliente cliente){
+		Session session = sessionManager.getSession();
+		Transaction transaction = session.beginTransaction();
 		
-		String HQL = "From Vendedor";
+		session.saveOrUpdate(cliente);
+		transaction.commit();
+		session.close();
+	}
+	
+	public List<Cliente> buscarTodos(){
+		String HQL = "From Cliente";
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		List<Vendedor>vendedores = query.list();
-		return vendedores;
-		
+		List<Cliente>clientes = query.list();
+		return clientes;
 	}
 	
-	public Vendedor buscarPorID(long vendedorID){
-		String HQL = "From Vendedor v where v.id = :vendedor_id";
+	public Cliente buscarPorID(long clienteID){
+		String HQL = "From Cliente v where v.id = :cliente_id";
 		
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		query.setLong("vendedor_id", vendedorID);
+		query.setLong("cliente_id", clienteID);
 		
-		return (Vendedor) query.uniqueResult();		
-	}	
+		return (Cliente) query.uniqueResult();		
+	}
 }

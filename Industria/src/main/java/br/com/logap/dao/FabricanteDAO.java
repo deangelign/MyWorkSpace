@@ -5,58 +5,59 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.logap.modelo.Vendedor;
 
-public class VendedorDAO extends DAO{
+import br.com.logap.modelo.Fabricante;
+
+public class FabricanteDAO extends DAO{
 	
-	public VendedorDAO(){
+	public FabricanteDAO (){
 		super();		
 	}
-			
-	public void inserir(Vendedor vendedor){
+	
+	public void inserir(Fabricante fabricante){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.saveOrUpdate(fabricante);
 		transaction.commit();
 		session.close();
 	}
 		
-	public void deletar(Vendedor vendedor){
+	public void deletar(Fabricante fabricante){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.delete(vendedor);
+		session.delete(fabricante);
 		transaction.commit();
 		session.close();
 	}
 	
-	public void Modificar(Vendedor vendedor){
+	public void Modificar(Fabricante fabricante){
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		
-		session.saveOrUpdate(vendedor);
+		session.saveOrUpdate(fabricante);
 		transaction.commit();
 		session.close();
 	}
 	
-	public List<Vendedor> buscarTodos(){
-		
-		String HQL = "From Vendedor";
+	public List<Fabricante> buscarTodos(){
+		String HQL = "From Fabricante";
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		List<Vendedor>vendedores = query.list();
-		return vendedores;
+		List<Fabricante>fabricantes = query.list();
+		return fabricantes;
 		
 	}
 	
-	public Vendedor buscarPorID(long vendedorID){
-		String HQL = "From Vendedor v where v.id = :vendedor_id";
+	public Fabricante buscarPorID(long fabricanteID){
+		String HQL = "From Fabricante v where v.id = :fabricante_id";
 		
 		Session session = sessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		query.setLong("vendedor_id", vendedorID);
+		query.setLong("fabricante_id", fabricanteID);
 		
-		return (Vendedor) query.uniqueResult();		
-	}	
+		return (Fabricante) query.uniqueResult();		
+	}
+
 }
