@@ -11,11 +11,11 @@
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">postgres</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost/teste</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost/industria</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
         
-        <mapping class="br.com.projetobase.modelo.Usuario"/>
-        <mapping class="br.com.projetobase.modelo.Equipamento"/>
-        <mapping class="br.com.projetobase.modelo.Sensor"/>
+        <mapping class="br.com.logap.modelo.Venda"/>
+         <mapping class="br.com.logap.modelo.Vendedor"/>
+       
 	</session-factory>
 </hibernate-configuration>
