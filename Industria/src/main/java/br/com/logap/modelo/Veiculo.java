@@ -10,27 +10,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name="veiculo")
 public class Veiculo {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_veiculo")
-	private int id;
+	private long id;
 	
-	@Column(name="id_mortorista", nullable=false)
-	private int idMotorista;
-
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	public int getIdMotorista() {
-		return idMotorista;
-	}
-
-	public void setIdMotorista(int idMotorista) {
-		this.idMotorista = idMotorista;
-	}
 }

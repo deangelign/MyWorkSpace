@@ -1,5 +1,7 @@
 package br.com.logap.modelo;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,13 +27,19 @@ public class Venda {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_vendedor")
 	private Vendedor vendedor;
+
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
 	
-	@Column(name = "id_cliente", nullable = false)
-	private long idCliente;
+	@OneToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "id_entrega")
+	private Entrega entrega;
 	
-	@Column(name = "id_entrega", nullable = false)
-	private long idEntrega;
+	@OneToMany(mappedBy = "venda", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	private List<Produto>produtos;
 	
+		
 	@Column(name = "valor", nullable = false)
 	private long valorTotal;
 
@@ -42,22 +51,6 @@ public class Venda {
 		this.id = id;
 	}
 
-
-	public long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(long idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public long getIdEntrega() {
-		return idEntrega;
-	}
-
-	public void setIdEntrega(long idEntrega) {
-		this.idEntrega = idEntrega;
-	}
 
 	public long getValorTotal() {
 		return valorTotal;
@@ -74,6 +67,32 @@ public class Venda {
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Entrega getEntrega() {
+		return entrega;
+	}
+
+	public void setEntrega(Entrega entrega) {
+		this.entrega = entrega;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
+	
+	
 
 	
 	
