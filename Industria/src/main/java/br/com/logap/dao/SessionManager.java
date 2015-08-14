@@ -11,13 +11,12 @@ public class SessionManager {
 	private static SessionManager sessionManager;
 	private static SessionFactory sessionFactory;
 	private static Configuration configuration;
-	private static Session session;
 	
 	
 	private SessionManager(){
 		configuration = new Configuration().configure("hibernate.cfg.xml");
 		sessionFactory = configuration.buildSessionFactory();
-		session = sessionFactory.openSession();
+		
 	}
 	
 	public static SessionManager getInstancia() {
@@ -31,7 +30,7 @@ public class SessionManager {
 	}
 
 	public static Session getSession() {
-		return session;
+		return sessionFactory.openSession();
 	}
 	
 	
