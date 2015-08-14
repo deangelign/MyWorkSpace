@@ -5,56 +5,57 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import br.com.logap.modelo.Vendedor;
 
-public class VendedorDAO extends DAO{
-	
-	public VendedorDAO(){
+import br.com.logap.modelo.Produto;
+
+public class ProdutoDAO extends DAO{
+
+	public ProdutoDAO(){
 		super();		
 	}
-			
-	public void inserir(Vendedor vendedor){
+
+	public void inserir(Produto produto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
-		
-		session.saveOrUpdate(vendedor);
+
+		session.saveOrUpdate(produto);
 		transaction.commit();
 		session.close();
 	}
-		
-	public void deletar(Vendedor vendedor){
+
+	public void deletar(Produto produto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
-		
-		session.delete(vendedor);
+
+		session.delete(produto);
 		transaction.commit();
 		session.close();
 	}
-	
-	public void Modificar(Vendedor vendedor){
+
+	public void Modificar(Produto produto){
 		Session session = SessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
-		
-		session.saveOrUpdate(vendedor);
+
+		session.saveOrUpdate(produto);
 		transaction.commit();
 		session.close();
 	}
-	
-	public List<Vendedor> buscarTodos(){
-		String HQL = "From Vendedor";
+
+	public List<Produto> buscarTodos(){
+		String HQL = "From Produto";
 		Session session = SessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		List<Vendedor>vendedores = query.list();
-		return vendedores;
+		List<Produto>produtos = query.list();
+		return produtos;
 	}
-	
-	public Vendedor buscarPorID(long vendedorID){
-		String HQL = "From Vendedor v where v.id = :vendedor_id";
-		
-		Session session = sessionManager.getSession();
+
+	public Produto buscarPorID(long produtoID){
+		String HQL = "From Produto v where v.id = :produto_id";
+
+		Session session = SessionManager.getSession();
 		Query query = (Query) session.createQuery(HQL);
-		query.setLong("vendedor_id", vendedorID);
-		
-		return (Vendedor) query.uniqueResult();		
-	}	
+		query.setLong("produto_id", produtoID);
+
+		return (Produto) query.uniqueResult();		
+	}
 }
