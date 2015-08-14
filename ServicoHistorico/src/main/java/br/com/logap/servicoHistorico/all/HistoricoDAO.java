@@ -1,6 +1,5 @@
 package br.com.logap.servicoHistorico.all;
 
-import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
