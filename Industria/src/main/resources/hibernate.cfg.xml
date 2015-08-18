@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="show_sql">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost/industria</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        
+        <mapping class="br.com.logap.modelo.Almoxarifado"/>
+        <mapping class="br.com.logap.modelo.Cliente"/>
+        <mapping class="br.com.logap.modelo.Entrega"/>
+        <mapping class="br.com.logap.modelo.Exclusividade"/>
+        <mapping class="br.com.logap.modelo.Fabricante"/>
+        <mapping class="br.com.logap.modelo.Fornecedor"/>
+        <mapping class="br.com.logap.modelo.Motorista"/>
+        <mapping class="br.com.logap.modelo.Produto"/>
+        <mapping class="br.com.logap.modelo.TipoProduto"/>
+        <mapping class="br.com.logap.modelo.Veiculo"/>
+        <mapping class="br.com.logap.modelo.Venda"/>
+        <mapping class="br.com.logap.modelo.Vendedor"/>
+        
+	</session-factory>
+</hibernate-configuration>

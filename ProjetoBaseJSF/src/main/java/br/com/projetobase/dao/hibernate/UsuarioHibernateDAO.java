@@ -17,8 +17,11 @@ public class UsuarioHibernateDAO extends HibernateDAO<Usuario> implements Usuari
 	public Usuario buscarPorEmail(String email) {
 		try {
 			String hql = "FROM Usuario WHERE email LIKE :emailUsuario";
+			System.out.println("11111111111");
 			Query query = getSession().createQuery(hql);
+			System.out.println("2222222222");
 			query.setParameter("emailUsuario", email);
+			System.out.println("33333333333");
 			
 			return (Usuario) query.uniqueResult();
 		} catch (Exception hibernateException) {
