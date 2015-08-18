@@ -1,17 +1,68 @@
 package br.com.logap.dao;
 
-import org.hibernate.Session;
+import java.lang.reflect.ParameterizedType;
 
-public class DAO {
-	
-	SessionManager sessionManager;
-	
-	public DAO(){
-		sessionManager =  SessionManager.getInstancia();
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+
+
+public class DAO<T extends ModeloPersistencia> {
+
+	private SessionManager sessionManager;
+	private Session session;
+	private Transaction transaction;
+	protected Class<T> classe;
+
+	public DAO() {
+		setSessionManager(SessionManager.getInstancia());
+		classe = getTypeClass();
+	}
+
+	public Session getSession() {
+		return SessionManager.getSession();
+	}
+
+	public SessionManager getSessionManager() {
+		return sessionManager;
+	}
+
+	public void setSessionManager(SessionManager sessionManager) {
+		this.sessionManager = sessionManager;
+	}
+
+	public void inserir(T objeto) {
+		session = SessionManager.getSession();
+		transaction = session.beginTransaction();
+		session.save(objeto);
+		transaction.commit();
+		session.close();
+	}
+
+	public void remover(T objeto) {
+		session = SessionManager.getSession();
+		transaction = session.beginTransaction();
+		session.delete(objeto);
+		transaction.commit();
+		session.close();
+	}
+
+	public void atualizar(T objeto) {
+		session = SessionManager.getSession();
+		transaction = session.beginTransaction();
+		session.update(objeto);
+		transaction.commit();
+		session.close();
+
 	}
 	
-	public Session getSession(){
-		return sessionManager.getSession();
+	public T buscar(Long id) {
+		return session.get(classe, id);
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	private Class<T> getTypeClass() {
+		return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+
 }
