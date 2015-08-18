@@ -9,8 +9,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="fornecedor")
-public class Fornecedor {
-	@Id
+public class Fornecedor extends Pessoa{
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
 	private int id;
@@ -33,4 +33,6 @@ public class Fornecedor {
 	public void setNomeFornecedor(String nomeFornecedor) {
 		this.nomeFornecedor = nomeFornecedor;
 	}
+	 */
+	public Fornecedor(){}	
 }

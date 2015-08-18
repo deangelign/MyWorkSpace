@@ -1,22 +1,19 @@
 package br.com.logap.modelo;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "vendedor")
-public class Vendedor {
-
-	@Id
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Vendedor extends Pessoa{
+	/*@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private long id;
@@ -40,9 +37,6 @@ public class Vendedor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	
-	
-	
-	
+    */
+	public Vendedor(){}		
 }

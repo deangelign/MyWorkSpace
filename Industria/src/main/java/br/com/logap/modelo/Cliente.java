@@ -7,13 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cliente")
-public class Cliente {
-	@Id
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Cliente extends Pessoa{
+/*	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private long id;
@@ -35,5 +38,6 @@ public class Cliente {
 
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
-	}
+	}*/
+	public Cliente(){}
 }
