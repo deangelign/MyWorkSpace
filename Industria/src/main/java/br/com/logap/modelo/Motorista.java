@@ -14,33 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="motorista")
 public class Motorista extends Pessoa{
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name="id")
-//	private long id;
-//	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;
-//	
-//	@Column(name = "nome_Motorista", nullable = false)
-//	private String nomeMotorista;
-//
-//	public long getId() {
-//		return id;
-//	}
-//	
-//	public void setId(long id) {
-//		this.id = id;
-//	}
-//
-//	public String getNomeMotorista() {
-//		return nomeMotorista;
-//	}
-//
-//	public void setNomeMotorista(String nomeMotorista) {
-//		this.nomeMotorista = nomeMotorista;
-//	}
+
 	public Motorista(){}
 
 	public Veiculo getVeiculo() {

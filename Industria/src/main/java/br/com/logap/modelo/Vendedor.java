@@ -13,30 +13,7 @@ import javax.persistence.Table;
 @Table(name = "vendedor")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Vendedor extends Pessoa{
-	/*@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
 	
-	@Column(name = "nome", nullable = false)
-	private String nome;
+	public Vendedor(){}
 	
-	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-    */
-	public Vendedor(){}		
 }

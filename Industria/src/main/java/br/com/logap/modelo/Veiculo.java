@@ -9,12 +9,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="veiculo")
-public class Veiculo {
-	
+public class Veiculo {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id_veiculo")
 	private long id;
+	
+	public Veiculo(){}
 	
 	public long getId() {
 		return id;

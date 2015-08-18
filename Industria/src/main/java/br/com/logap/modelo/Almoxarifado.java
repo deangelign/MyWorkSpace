@@ -18,6 +18,8 @@ public class Almoxarifado {
 	@Column(name="tipo_produto")
 	private long tipoProduto;
 
+	public Almoxarifado(){}
+	
 	public long getId() {
 		return id;
 	}

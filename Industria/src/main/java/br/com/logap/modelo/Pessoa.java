@@ -16,7 +16,7 @@ public class Pessoa {
 	@Column(name="nome_pessoa", nullable=false)
 	private String nome;
 	
-	@Column(name="tipo_pessoa",nullable=false)
+	@Column(name="tipo_pessoa", nullable=false)
 	private String tipoPessoa;
 	
 	public Pessoa(){}
@@ -35,5 +35,13 @@ public class Pessoa {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 }

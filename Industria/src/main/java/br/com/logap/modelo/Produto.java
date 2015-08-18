@@ -36,6 +36,8 @@ public class Produto {
 	@JoinColumn(name = "id_venda")
 	private Venda venda;
 	
+	public Produto(){}
+	
 	public long getId() {
 		return id;
 	}

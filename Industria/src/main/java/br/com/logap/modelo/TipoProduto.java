@@ -20,6 +20,8 @@ public class TipoProduto {
 	
 	@Column(name="id_produto")
 	private long idProduto;
+	
+	public TipoProduto(){}
 
 	public long getId() {
 		return id;

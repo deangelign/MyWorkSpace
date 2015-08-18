@@ -25,40 +25,33 @@ public class Entrega {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_motorista")
 	private Motorista motorista;
-	
-		
+			
 	@Column(name="data_hora")
 	private Timestamp dataHora;
-
+	
+	public Entrega(){}
 
 	public long getId() {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
 
 	public Motorista getMotorista() {
 		return motorista;
 	}
 
-
 	public void setMotorista(Motorista motorista) {
 		this.motorista = motorista;
 	}
-
 
 	public Timestamp getDataHora() {
 		return dataHora;
 	}
 
-
 	public void setDataHora(Timestamp dataHora) {
 		this.dataHora = dataHora;
-	}
-	
-	
+	}	
 }

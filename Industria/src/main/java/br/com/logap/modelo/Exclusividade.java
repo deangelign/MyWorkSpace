@@ -21,6 +21,8 @@ public class Exclusividade {
 	@Column(name="id_fabricante")
 	private long idFabricante;
 	
+	public Exclusividade(){}
+	
 	public long getId() {
 		return id;
 	}

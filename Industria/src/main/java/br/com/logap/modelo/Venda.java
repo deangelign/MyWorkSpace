@@ -17,8 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "venda")
-public class Venda {
-	
+public class Venda {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -38,10 +37,11 @@ public class Venda {
 	
 	@OneToMany(mappedBy = "venda", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	private List<Produto>produtos;
-	
 		
 	@Column(name = "valor", nullable = false)
 	private long valorTotal;
+	
+	public Venda(){}
 
 	public long getId() {
 		return id;
