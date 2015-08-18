@@ -15,8 +15,11 @@ public class Veiculo {
 	@Column(name="id_veiculo")
 	private long id;
 	
-	public Veiculo(){}
+	@Column(name="tipo_veiculo", nullable=false)
+	private String tipoVeiculo;
 	
+	public Veiculo(){}
+
 	public long getId() {
 		return id;
 	}
@@ -24,5 +27,12 @@ public class Veiculo {
 	public void setId(long id) {
 		this.id = id;
 	}
+	
+	public String getTipoVeiculo() {
+		return tipoVeiculo;
+	}
 
+	public void setTipoVeiculo(String tipoVeiculo) {
+		this.tipoVeiculo = tipoVeiculo;
+	}
 }

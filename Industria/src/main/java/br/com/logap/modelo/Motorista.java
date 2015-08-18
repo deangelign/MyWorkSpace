@@ -4,9 +4,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -17,7 +14,10 @@ public class Motorista extends Pessoa{
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;
-
+	
+	@Column(name="telefone_motorista",nullable=false)
+	private String telefone;
+		
 	public Motorista(){}
 
 	public Veiculo getVeiculo() {
@@ -26,5 +26,13 @@ public class Motorista extends Pessoa{
 
 	public void setVeiculo(Veiculo veiculo) {
 		this.veiculo = veiculo;
+	}
+	
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}	
 }
