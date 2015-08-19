@@ -1,5 +1,6 @@
 package br.com.projetobase.dao.hibernate;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -12,14 +13,17 @@ public class HistoricoHibernateDAO extends HibernateDAO<Historico> implements Hi
 
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Historico> buscarHistoricoDoGrafico(Long idSensor,
-			String dataInicial, String dataFinal) {
+	public List<Historico> buscarHistoricoDoGrafico(Long idSensor, Date dataInicial, Date dataFinal) {
 		
-		String hql = "FROM historico WHERE email sensor.id = idSensor and historico.tempo BETWEEN :startDate and :endDate";
+		//String hql = "FROM Historico";
+		String hql = "FROM Historico";
 		Query query = getSession().createQuery(hql);
-		query.setParameter("startDate", dataInicial);
-		query.setParameter("endDate", dataFinal);
+		//System.out.println("id Sensor: " + idSensor);
+		//query.setParameter("idSensor", idSensor);
+		//query.setParameter("startDate", dataInicial);
+		//query.setParameter("endDate", dataFinal);
 		return (List<Historico>) query.list();
 		
 	}

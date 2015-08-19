@@ -1,9 +1,13 @@
 package br.com.projetobase.modelo;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.projetobase.arq.modelo.ModeloPersistencia;
@@ -18,16 +22,14 @@ public class Historico extends ModeloPersistencia {
 	double valor;
 	
 	@Column(name = "tempo", nullable = false)
-	Timestamp tempo;
+	Date tempo;
 	
-	@Column(name = "id_sensor", nullable = false)
-	Long id_sensor;
-	
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_sensor", foreignKey = @ForeignKey(name = "fk_sensor"))
+	private Sensor sensor;
 
 	public Historico() {	
 	}
-
 
 	public double getValor() {
 		return valor;
@@ -37,26 +39,20 @@ public class Historico extends ModeloPersistencia {
 		this.valor = valor;
 	}
 
-	public Timestamp getTempo() {
+	public Date getTempo() {
 		return tempo;
 	}
 
-	public void setTempo(Timestamp tempo) {
+	public void setTempo(Date tempo) {
 		this.tempo = tempo;
 	}
 
-
-	public Long getId_sensor() {
-		return id_sensor;
+	public Sensor getSensor() {
+		return sensor;
 	}
 
-
-	public void setId_sensor(Long id_sensor) {
-		this.id_sensor = id_sensor;
+	public void setSensor(Sensor sensor) {
+		this.sensor = sensor;
 	}
 
-	
-	
-	
-	
 }

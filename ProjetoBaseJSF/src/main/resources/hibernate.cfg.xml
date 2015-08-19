@@ -10,12 +10,13 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">postgres</property>
+        <property name="hibernate.connection.password">123</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost/teste</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         
         <mapping class="br.com.projetobase.modelo.Usuario"/>
         <mapping class="br.com.projetobase.modelo.Equipamento"/>
+        <mapping class="br.com.projetobase.modelo.Historico"/>
         <mapping class="br.com.projetobase.modelo.Sensor"/>
 	</session-factory>
 </hibernate-configuration>

@@ -1,12 +1,11 @@
 function buscarPontos() {
-	var url = ctx + "/rest/historico/buscarPontos6";
+	var url = ctx + "/rest/historico/buscarPontos";
 	var idSensor = $("select[name$='caixaSelecaoSensor'] option:selected").val();
 	var dataIncial = $("#dataInicio").val();
 	var dataFinal = $("#dataFim").val();
 	
-	var parametros = new Parametros(idSensor, dataIncial, dataFinal);
-	var json = JSON.stringify(parametros);
-	
+	var parametrosRequest = new parametros(idSensor, dataIncial, dataFinal);
+	var parametrosRequestJSON = JSON.stringify(parametrosRequest);
 	
 	//var name = "issoAkiEUmTeste";
 	
@@ -18,23 +17,33 @@ function buscarPontos() {
 		//	var tempo = historico.tempo;
 		//});
 	//});
-	$.post(url,function(data){
-		alert("teste");
-		var aux = data.nome;
-	});
+	
+	$.ajax({
+		  url: url,
+		  type:'POST',
+		  data: parametrosRequestJSON,
+		  dataType: 'json',
+		  contentType: "application/json",
+		  success: function() {
+		    alert("final");	
+		  }
+		});
+//	$.post(url,json, function(data){
+//		alert("teste");
+//		var aux = data.nome;
+//	});
 	
 	//aux = historicos.length
 	//aux2 = valor;
-	var aux2 = data.nome;
 	
-	atualizarGrafico();
+//	atualizarGrafico();
 	
 }
 
-function Parametros(id, dataInicial, dataFinal) {
+function parametros(id, dataInicio, dataFim) {
 	this.id = id;
-	this.dataInicial = dataInicial;
-	this.dateFinal = dataFinal;
+	this.dataInicio = dataInicio;
+	this.dataFim = dataFim;
 }
 
 
