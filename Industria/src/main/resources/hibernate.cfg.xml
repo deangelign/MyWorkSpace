@@ -12,7 +12,7 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">postgres</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost/industria</property>
-        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         
         <mapping class="br.com.logap.modelo.Almoxarifado"/>
         <mapping class="br.com.logap.modelo.Cliente"/>
