@@ -7,13 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 @Entity
 @Table(name="exclusividade")
-public class Exclusividade {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	@Column(name="id")
-	private long id;
+public class Exclusividade extends ModeloPersistencia{
 	
 	@Column(name="id_fornecedor")
 	private long idFornecedor;
@@ -23,13 +21,6 @@ public class Exclusividade {
 	
 	public Exclusividade(){}
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public long getIdFornecedor() {
 		return idFornecedor;

@@ -6,12 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 @MappedSuperclass
-public class Pessoa {
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name="id_pessoa")
-	private long id;
+public class Pessoa extends ModeloPersistencia{
 	
 	@Column(name="nome_pessoa", nullable=false)
 	private String nome;
@@ -20,15 +18,7 @@ public class Pessoa {
 	private String tipoPessoa;
 	
 	public Pessoa(){}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
+	
 	public String getNome() {
 		return nome;
 	}

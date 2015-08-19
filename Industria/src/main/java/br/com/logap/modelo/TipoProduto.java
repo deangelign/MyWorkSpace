@@ -7,13 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 @Entity
 @Table(name="tipoProduto")
-public class TipoProduto {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="id")
-	private long id;
+public class TipoProduto extends ModeloPersistencia{
 	
 	@Column(name="tipo_produto")
 	private int tipoProduto;
@@ -22,14 +20,6 @@ public class TipoProduto {
 	private long idProduto;
 	
 	public TipoProduto(){}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public int getTipoProduto() {
 		return tipoProduto;

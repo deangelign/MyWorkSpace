@@ -15,13 +15,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 @Entity
 @Table(name = "venda")
-public class Venda {	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
+public class Venda extends ModeloPersistencia{	
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_vendedor")
@@ -43,13 +41,6 @@ public class Venda {
 	
 	public Venda(){}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 
 	public long getValorTotal() {

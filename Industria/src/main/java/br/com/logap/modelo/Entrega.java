@@ -13,13 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 @Entity
 @Table(name="entrega")
-public class Entrega {
-	@Id
-	@GeneratedValue(strategy =GenerationType.AUTO)
-	@Column(name="id")
-	private long id;
+public class Entrega extends ModeloPersistencia{
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_motorista")
@@ -29,14 +27,6 @@ public class Entrega {
 	private Timestamp dataHora;
 	
 	public Entrega(){}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public Motorista getMotorista() {
 		return motorista;

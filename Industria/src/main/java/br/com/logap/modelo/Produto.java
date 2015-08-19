@@ -10,14 +10,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 
 @Entity
 @Table(name = "produto")
-public class Produto {	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
+public class Produto extends ModeloPersistencia {	
 	
 	@Column(name = "nome_Produto", nullable = false)
 	private String nomeProduto;
@@ -37,13 +35,6 @@ public class Produto {
 	
 	public Produto(){}
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getNomeProduto() {
 		return nomeProduto;
