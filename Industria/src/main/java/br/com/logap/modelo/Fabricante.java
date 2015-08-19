@@ -7,6 +7,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="fabricante")
 public class Fabricante extends Pessoa{	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column(name="telefone_fabricante",nullable=false)
 	private String telefone;
 

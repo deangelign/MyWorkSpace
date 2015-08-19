@@ -11,6 +11,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="motorista")
 public class Motorista extends Pessoa{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;

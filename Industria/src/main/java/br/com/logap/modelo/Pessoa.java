@@ -1,9 +1,6 @@
 package br.com.logap.modelo;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import br.com.logap.dao.ModeloPersistencia;
@@ -11,6 +8,11 @@ import br.com.logap.dao.ModeloPersistencia;
 @MappedSuperclass
 public class Pessoa extends ModeloPersistencia{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name="nome_pessoa", nullable=false)
 	private String nome;
 	

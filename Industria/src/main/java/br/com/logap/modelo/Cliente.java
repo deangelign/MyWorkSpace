@@ -10,6 +10,10 @@ import javax.persistence.Table;
 @Table(name="cliente")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Cliente extends Pessoa{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Column(name="telefone_cliente",nullable=false)
 	private String telefone;
 		
