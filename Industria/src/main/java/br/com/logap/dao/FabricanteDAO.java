@@ -1,6 +1,6 @@
 package br.com.logap.dao;
 
-public class FabricanteDAO extends DAO{
+public class FabricanteDAO extends HibernateDAO{
 	
 	public FabricanteDAO (){
 		super();		

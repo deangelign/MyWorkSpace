@@ -1,7 +1,7 @@
 package br.com.logap.dao;
 
 
-public class ExclusividadeDAO extends DAO{
+public class ExclusividadeDAO extends HibernateDAO{
 
 	
 	public ExclusividadeDAO(){

@@ -2,7 +2,7 @@ package br.com.logap.dao;
 
 
 
-public class AlmoxarifadoDAO extends DAO{
+public class AlmoxarifadoDAO extends HibernateDAO{
 		
 	public AlmoxarifadoDAO(){
 		super();
