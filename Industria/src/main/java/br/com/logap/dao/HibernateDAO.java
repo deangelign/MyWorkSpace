@@ -1,6 +1,7 @@
 package br.com.logap.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,6 +54,11 @@ public abstract class HibernateDAO<T extends ModeloPersistencia> implements DAO<
 	
 	public T buscar(Long id) {
 		return session.get(classe, id);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<T> buscarTodos(){
+		return session.createCriteria(classe).list();
 	}
 
 	@SuppressWarnings("unchecked")
