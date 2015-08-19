@@ -1,6 +1,5 @@
 package br.com.logap.dao;
 
-import java.util.List;
 
 
 public interface DAO <T extends ModeloPersistencia> {

@@ -9,20 +9,17 @@ import org.hibernate.Transaction;
 
 public abstract class HibernateDAO<T extends ModeloPersistencia> implements DAO<T>{
 
-	private static SessionManager sessionManager;
+	//private static SessionManager sessionManager;
 	private Session session;
 	private Transaction transaction;
 	private Class<T> classe;
 
 	public HibernateDAO() {
-		sessionManager = (SessionManager.getInstancia());
-		Class<T> clazz = inferGenericType();
+		//sessionManager = (SessionManager.getInstancia());
+		Class<T> clazz = getTypeClass();
 		classe = clazz;
 	}
 
-	private Class<T> inferGenericType() {
-		return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-	}
 	
 	public Session getSession() {
 		return SessionManager.getSession();
@@ -62,5 +59,6 @@ public abstract class HibernateDAO<T extends ModeloPersistencia> implements DAO<
 	private Class<T> getTypeClass() {
 		return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	}
+
 
 }
