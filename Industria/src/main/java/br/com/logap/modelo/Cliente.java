@@ -1,39 +1,30 @@
 package br.com.logap.modelo;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cliente")
-public class Cliente {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Cliente extends Pessoa{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Column(name="telefone_cliente",nullable=false)
+	private String telefone;
+		
+	public Cliente(){}
 	
-	@Column(name = "nome_Cliente", nullable = false)
-	private String nomeCliente;
-	
-	public long getId() {
-		return id;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
-	}
 }

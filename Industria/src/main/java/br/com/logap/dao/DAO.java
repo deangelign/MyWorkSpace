@@ -1,17 +1,14 @@
 package br.com.logap.dao;
 
-import org.hibernate.Session;
 
-public class DAO {
+
+public interface DAO <T extends ModeloPersistencia> {
+	void inserir(T entidade);
 	
-	SessionManager sessionManager;
+	void atualizar(T entidade);
 	
-	public DAO(){
-		sessionManager =  SessionManager.getInstancia();
-	}
+	void remover(T entidade);
 	
-	public Session getSession(){
-		return sessionManager.getSession();
-	}
+	T buscar(Long id);
 	
 }

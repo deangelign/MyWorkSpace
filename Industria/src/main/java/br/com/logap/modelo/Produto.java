@@ -3,23 +3,22 @@ package br.com.logap.modelo;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import br.com.logap.dao.ModeloPersistencia;
+
 
 @Entity
 @Table(name = "produto")
-public class Produto {	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
+public class Produto extends ModeloPersistencia {	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "nome_Produto", nullable = false)
 	private String nomeProduto;
 	
@@ -36,13 +35,8 @@ public class Produto {
 	@JoinColumn(name = "id_venda")
 	private Venda venda;
 	
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
+	public Produto(){}
+	
 
 	public String getNomeProduto() {
 		return nomeProduto;

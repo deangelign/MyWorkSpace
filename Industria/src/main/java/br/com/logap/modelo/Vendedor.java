@@ -1,48 +1,30 @@
 package br.com.logap.modelo;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "vendedor")
-public class Vendedor {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private long id;
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Vendedor extends Pessoa{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
-	@Column(name = "nome", nullable = false)
-	private String nome;
+	@Column(name="telefone_vendedor",nullable=false)
+	private String telefone;
 	
+	public Vendedor(){}
 	
-	public long getId() {
-		return id;
+	public String getTelefone() {
+		return telefone;
 	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	
-	
-	
-	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}	
 }
