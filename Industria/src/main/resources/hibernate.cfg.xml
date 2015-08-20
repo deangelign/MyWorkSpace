@@ -12,7 +12,7 @@
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">postgres</property>
         <property name="hibernate.connection.url">jdbc:postgresql://localhost/industria</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
         
         <mapping class="br.com.logap.modelo.Almoxarifado"/>
         <mapping class="br.com.logap.modelo.Cliente"/>
@@ -22,7 +22,11 @@
         <mapping class="br.com.logap.modelo.Fornecedor"/>
         <mapping class="br.com.logap.modelo.Motorista"/>
         <mapping class="br.com.logap.modelo.Produto"/>
+        <mapping class="br.com.logap.modelo.ProdutoVenda"/>
+        <mapping class="br.com.logap.modelo.ProdutoAlmoxarifado"/>
         <mapping class="br.com.logap.modelo.TipoProduto"/>
+        <mapping class="br.com.logap.modelo.TipoProdutoAlmoxarifado"/>
+        <mapping class="br.com.logap.modelo.Usuario"/>
         <mapping class="br.com.logap.modelo.Veiculo"/>
         <mapping class="br.com.logap.modelo.Venda"/>
         <mapping class="br.com.logap.modelo.Vendedor"/>
