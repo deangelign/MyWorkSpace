@@ -9,20 +9,21 @@
     </h:head>
     
     <h:body>
-    	     
-        <h:form id="campos">
-            <h:panelGrid id="infoLogin" columns="2" style="margin-bottom:10px">
+    	<h:form id="formLogin">
+    		<h3>Insira seu login e senha:</h3>
+    		
+    		<h:outputText>Login</h:outputText>
 
-                <h:outputLabel for="login" value="Login:" />
-                <h:inputText id="login" value=""/>
+    		<h:panelGrid id="infoLogin" columns="2" style="margin-bottom:10px">
 
-                <h:outputLabel for="senha" value="Senha:" />
-                <h:inputText id="senha" value="" />
+    			<h:outputLabel for="login" value="Login:" />
+        		<h:inputText id="login" value="#{loginBean.login}"/>
 
-                <h:commandButton value="Entrar"/>
-                <h:commandButton value="Cadastrar"/>
+        		<h:outputLabel for="senha" value="Senha:" />
+        		<h:inputSecret id="senha" value="#{loginBean.senha}"/>
 
-            </h:panelGrid>
-         </h:form>
+        		<h:commandButton value="Entrar" action="#{loginBean.logar}"/>        		
+    		</h:panelGrid>
+    	</h:form>
     </h:body>
 </html>
