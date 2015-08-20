@@ -10,14 +10,10 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginBean {
 
-	private Usuario usuario;
-
 	private String login;
 	private String senha;
 
-	public LoginBean() {
-		
-	}
+	public LoginBean() {}
 
 	public String getLogin() {
 		return login;
@@ -35,29 +31,22 @@ public class LoginBean {
 		this.senha = senha;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	public void Logar() {
-		login = usuario.getLogin();
-		senha = usuario.getSenha();
-		
-		validarUsuario(login, senha);
+	public void logar() {	
+		validarUsuario(login, senha);			
 	}
 
 	public String validarUsuario(String login, String senha) {
 		String usuarioTeste = "teste";
 		String senhaTeste = "1234";
 
-		if ((usuario.equals(usuarioTeste)) && (senha.equals(senhaTeste))){
+		if ((login.equals(usuarioTeste)) && (senha.equals(senhaTeste))){
 			return "inicio.xhtml";
 		}else{
 			return "login.xhtml";
 		}
+	}
+	
+	public String logout(){
+		return "login";				
 	}
 }
