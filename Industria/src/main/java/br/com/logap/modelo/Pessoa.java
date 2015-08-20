@@ -16,8 +16,14 @@ public class Pessoa extends ModeloPersistencia{
 	@Column(name="nome_pessoa", nullable=false)
 	private String nome;
 	
-	@Column(name="tipo_pessoa", nullable=false)
-	private String tipoPessoa;
+	@Column(name="endereco", nullable=false)
+	private String endereco;
+	
+	@Column(name="telefone", nullable=true)
+	private String telefone;
+	
+	@Column(name="email", nullable=true)
+	private String email;
 	
 	public Pessoa(){}
 	
@@ -29,11 +35,29 @@ public class Pessoa extends ModeloPersistencia{
 		this.nome = nome;
 	}
 
-	public String getTipoPessoa() {
-		return tipoPessoa;
+	public String getEndereco() {
+		return endereco;
 	}
 
-	public void setTipoPessoa(String tipoPessoa) {
-		this.tipoPessoa = tipoPessoa;
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
 	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
 }

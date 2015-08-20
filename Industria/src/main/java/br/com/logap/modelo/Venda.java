@@ -1,6 +1,5 @@
 package br.com.logap.modelo;
 
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -35,10 +33,7 @@ public class Venda extends ModeloPersistencia{
 	@OneToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_entrega")
 	private Entrega entrega;
-	
-	@OneToMany(mappedBy = "venda", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	private List<Produto>produtos;
-		
+			
 	@Column(name = "valor", nullable = false)
 	private long valorTotal;
 	
@@ -77,19 +72,5 @@ public class Venda extends ModeloPersistencia{
 	public void setEntrega(Entrega entrega) {
 		this.entrega = entrega;
 	}
-
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-	
-	
-
-	
-	
-	
 	
 }
