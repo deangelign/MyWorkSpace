@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+	<ui:define name="tituloPagina">
+		Cadastrar Venda
+	</ui:define>
+	
+	<ui:define name="corpo">
+       	<h:panelGrid id="infoVenda" columns="2" style="margin-bottom:10px">
+   			<h:outputLabel for="nomeVendedor" value="Nome do Vendedor:" />
+       		<h:inputText id="nomeVendedor" />
+       		
+       		<h:outputLabel for="nomeCliente" value="Nome do Cliente:" />
+       		<h:inputText id="nomeCliente" />
+       		       		
+       		<h:outputLabel for="entrega" value="Dados da Entrega:" />
+       		<h:inputText id="entrega" />
+       		
+       		<h:outputLabel for="valor" value="Valor:" />
+       		<h:inputSecret id="valor" value="#{loginBean.valor}"/>
+
+        	<h:commandButton value="Cadastrar Venda" action="#{loginBean.cadastraVenda}"/>        		
+    	</h:panelGrid>
+	</ui:define>
+	
+</ui:composition>
