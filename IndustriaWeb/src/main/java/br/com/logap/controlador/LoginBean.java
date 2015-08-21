@@ -31,8 +31,8 @@ public class LoginBean {
 		this.senha = senha;
 	}
 
-	public void logar() {	
-		validarUsuario(login, senha);			
+	public String logar() {	
+		return validarUsuario(login, senha);			
 	}
 
 	public String validarUsuario(String login, String senha) {
@@ -40,9 +40,9 @@ public class LoginBean {
 		String senhaTeste = "1234";
 
 		if ((login.equals(usuarioTeste)) && (senha.equals(senhaTeste))){
-			return "inicio.xhtml";
+			return "home";
 		}else{
-			return "login.xhtml";
+			return "login";
 		}
 	}
 	
