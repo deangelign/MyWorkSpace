@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+
+
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/bootstrap/css/bootstrap.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/bower_components/bootstrap/dist/css/bootstrap.min.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/bower_components/metisMenu/dist/metisMenu.min.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/css/timeline.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/css/sb-admin-2.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/bower_components/morrisjs/morris.css"
+		rel="stylesheet" />
+
+	<link
+		href="${facesContext.externalContext.requestContextPath}/resources/bower_components/font-awesome/css/font-awesome.min.css"
+		rel="stylesheet" />
+
+	<title><ui:insert name="tituloPagina" /></title>
+
+</h:head>
+
+
+<h:body>
+
+
+	<div id="wrapper">
+		<h:form>
+			<nav class="navbar navbar-default navbar-static-top"
+				role="navigation" style="margin-bottom: 0">
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+
+
+				</div>
+				<!-- /.navbar-header -->
+
+				<ul class="nav navbar-top-links navbar-right">
+
+					<li class="dropdown">Olá _nomeUsuario</li>
+
+					<!-- /.dropdown -->
+					<li class="dropdown"><h:commandLink class="list-group"
+							action="#">
+							<i class="glyphicon glyphicon-log-out"> </i>
+						</h:commandLink></li>
+
+					<!-- /.dropdown -->
+				</ul>
+				<!-- /.navbar-top-links -->
+
+				<div class="navbar-default sidebar" role="navigation">
+					<div class="sidebar-nav navbar-collapse">
+						<ul class="nav" id="side-menu">
+							<li class="sidebar-search">
+								<div class="input-group custom-search-form">
+									<input type="text" class="form-control" placeholder="Search..." /><span
+										class="input-group-btn">
+										<button class="btn btn-default" type="button">
+											<i class="fa fa-search"></i>
+										</button>
+									</span>
+								</div> <!-- /input-group -->
+							</li>
+
+
+							<li><h:commandLink action="#">
+									<i class="fa fa-home"></i>
+											Home
+									</h:commandLink></li>
+
+
+							<li><h:commandLink
+									action="#{homeBean.irParaCadastroEquipamento}">
+									<i class="glyphicon glyphicon-hdd"></i>
+											Cadastrar Venda
+									</h:commandLink></li>
+
+							<li><h:commandLink action="#">
+									<i class="fa fa-hdd-o"></i>
+										Cadastrar Cliente
+									</h:commandLink></li>
+
+							<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+									SUbopcao<span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level">
+									<li><a href="#">Subopcao1</a></li>
+									<li><a href="#">subOpcao2</a></li>
+								</ul></li>
+
+
+						</ul>
+					</div>
+					<!-- /.sidebar-collapse -->
+				</div>
+				<!-- /.navbar-static-side -->
+			</nav>
+		</h:form>
+	</div>
+
+	<div id="conteudo">
+		<div id="page-wrapper">
+			<ui:insert name="corpo" />
+		</div>
+	</div>
+
+
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/bower_components/jquery/dist/jquery.min.js"></script>
+	
+	<script src="${facesContext.externalContext.requestContextPath}/resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<script src="${facesContext.externalContext.requestContextPath}/resources/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+	
+	
+	<script
+		src="${facesContext.externalContext.requestContextPath}/resources/js/sb-admin-2.js"></script>
+	
+
+</h:body>
+
+</html>
