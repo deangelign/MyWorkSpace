@@ -5,15 +5,18 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import br.com.projetobase.arq.modelo.ModeloPersistencia;
 
 @Entity
 @Table(name = "historico")
+@JsonIgnoreProperties({"sensor"})
+//@JsonSerialize(using = JsonStdHistoricoSerializer.class)
 public class Historico extends ModeloPersistencia {
 	
 	private static final long serialVersionUID = 1L;
@@ -25,7 +28,7 @@ public class Historico extends ModeloPersistencia {
 	Date tempo;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_sensor", foreignKey = @ForeignKey(name = "fk_sensor"))
+	@JoinColumn(name = "id_sensor")
 	private Sensor sensor;
 
 	public Historico() {	

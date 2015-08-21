@@ -41,6 +41,7 @@ public class ThreadSensorManager implements Runnable{
 		sensoresID = pegarIdSensores();
 		loggerSensorReveiver.info("Consulta realizada com sucesso");
 		
+		
 		for(Long idSensor: sensoresID){
 			loggerSensorReveiver.info("Checando se o sensor de id: " + idSensor + " ja possui thread");
 			if(!mapSensores.containsKey(idSensor)){

@@ -1,6 +1,7 @@
 package br.com.logap.servicoHistorico.all;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,12 +21,12 @@ public class HistoricoDAO {
 				+ " values (?,?,?,?)";
 
 		try {
-			// prepared statement para inserção
+			// prepared statement para inserï¿½ï¿½o
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			stmt.setLong(1, historico.getId());
 			stmt.setDouble(2, historico.getValor());
-			stmt.setTimestamp(3, historico.getTempo());
+			stmt.setDate(3, (Date) historico.getTempo());
 			stmt.setLong(4, historico.getId_sensor());
 
 			// executa
@@ -59,7 +60,7 @@ public class HistoricoDAO {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 
 			stmt.setDouble(2, historico.getValor());
-			stmt.setTimestamp(3, historico.getTempo());
+			stmt.setDate(3, (Date) historico.getTempo());
 			stmt.setLong(4, historico.getId_sensor());
 			
 			stmt.execute();

@@ -18,24 +18,22 @@
 				<div class="col-lg-12">
 					<h1 class="page-header">Home</h1>
 					<div class="form-inline">
-						<h:form >
-						
-								<script>
-									const
-									ctx = "${facesContext.externalContext.requestContextPath}";
-								</script>
-	
+						<h:form>
+
+							<script>
+								const
+								ctx = "${facesContext.externalContext.requestContextPath}";
+							</script>
+
 							<script
 								src="${facesContext.externalContext.requestContextPath}/resources/grafico/grafico-util.js"></script>
-						
-							<script src="http://code.highcharts.com/highcharts.js"></script>
-							<script src="http://code.highcharts.com/modules/exporting.js"></script>
-	
+							
+
 							<div>
 								<label for="caixaSelecaoEquipamentoHome1">Selecione um
 									equipamento </label>
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-	
+
 								<h:selectOneMenu label="Equipamento"
 									id="caixaSelecaoEquipamentoHome1"
 									value="#{cadastroSensorBean.equipamento.id}"
@@ -44,21 +42,20 @@
 									<f:selectItems value="#{cadastroSensorBean.equipamentos}"
 										var="_equipamento" itemValue="#{_equipamento.id}"
 										itemLabel="#{_equipamento.nome}" />
-	
+
 									<f:ajax listener="#{cadastroSensorBean.atualizarLista}"
 										event="change" execute="@this caixaSelecaoEquipamento"
 										render="caixaSelecaoSensor" />
-	
+
 								</h:selectOneMenu>
 							</div>
-	
-	
+
+
 							<div>
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-								<label for="caixaSelecaoSensor">Selecione um
-									Sensor </label>
+								<label for="caixaSelecaoSensor">Selecione um Sensor </label>
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-	
+
 								<h:selectOneMenu label="Sensor" id="caixaSelecaoSensor"
 									value="#{cadastroSensorBean.sensor.id}"
 									class="btn btn-default dropdown-toggle">
@@ -66,34 +63,42 @@
 									<f:selectItems value="#{cadastroSensorBean.sensores}"
 										var="_sensor" itemValue="#{_sensor.id}"
 										itemLabel="#{_sensor.nome}" id="testeSensorId" />
-	
-	
+
+
 								</h:selectOneMenu>
 							</div>
-	
+
 							<h4 class="page-header">Buscar por Periodo</h4>
 							<div class="form-group">
 								<label for="dataInicio">De</label> <input type="date"
 									class="form-control" id="dataInicio" name="dataInicio" />
 							</div>
-	
+
 							<div class="form-group">
 								<label for="dataFim">Ate</label> <input type="date"
 									class="form-control" id="dataFim" name="dataFim" />
 							</div>
 						</h:form>
 						
-						<div class="form-group">
-							<a class="btn btn-primary"
-								onclick="buscarPontos()">Buscar</a>
-	
-						</div>
 						
-						<div id="grafico" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-					</div>
-					<script
-						src="${facesContext.externalContext.requestContextPath}/resources/grafico/grafico-util.js"></script>
+						<div class="form-group">
+							<br/>
+							<button type="button" class="btn btn-primary" onclick="buscarPontos()">Buscar</button>
 
+						</div>
+
+						<div id="grafico"
+							style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+					</div>
+					
+					<script
+						src="${facesContext.externalContext.requestContextPath}/resources/highchart/js/highstock.js"></script>
+
+					<script
+						src="${facesContext.externalContext.requestContextPath}/resources/highchart/js/exporting.js"></script>
+
+					
+					
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>

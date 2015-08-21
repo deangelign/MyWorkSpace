@@ -18,12 +18,12 @@ public class HistoricoHibernateDAO extends HibernateDAO<Historico> implements Hi
 	public List<Historico> buscarHistoricoDoGrafico(Long idSensor, Date dataInicial, Date dataFinal) {
 		
 		//String hql = "FROM Historico";
-		String hql = "FROM Historico";
+		String hql = "FROM Historico h WHERE h.sensor.id = :idSensor AND h.tempo >= :startDate AND h.tempo <= :endDate ORDER BY h.tempo ASC";
 		Query query = getSession().createQuery(hql);
 		//System.out.println("id Sensor: " + idSensor);
-		//query.setParameter("idSensor", idSensor);
-		//query.setParameter("startDate", dataInicial);
-		//query.setParameter("endDate", dataFinal);
+		query.setParameter("idSensor", idSensor);
+		query.setParameter("startDate", dataInicial);
+		query.setParameter("endDate", dataFinal);
 		return (List<Historico>) query.list();
 		
 	}

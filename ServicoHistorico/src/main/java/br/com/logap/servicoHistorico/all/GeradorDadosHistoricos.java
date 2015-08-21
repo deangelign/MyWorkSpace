@@ -21,7 +21,7 @@ public class GeradorDadosHistoricos {
 
 	public static void main(String args[]) throws SQLException {
 		loggerMain.info("criando tabela no banco......");
-		criarTabelaNoBanco();
+		//criarTabelaNoBanco();
 		loggerMain.info("tabela criada");
 
 		 ThreadSensorManager treSensorManager = new ThreadSensorManager();

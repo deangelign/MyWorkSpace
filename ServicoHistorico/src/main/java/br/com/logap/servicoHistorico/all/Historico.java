@@ -1,6 +1,6 @@
 package br.com.logap.servicoHistorico.all;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Random;
 
 public class Historico {
@@ -9,7 +9,7 @@ public class Historico {
 	
 	double valor;
 	
-	Timestamp tempo;
+	Date tempo;
 	
 	Long id_sensor;
 	
@@ -21,7 +21,6 @@ public class Historico {
 		
 		Random random = new Random();
 		this.valor = media + ( random.nextGaussian()*var );
-		
 	}
 
 
@@ -33,11 +32,14 @@ public class Historico {
 		this.valor = valor;
 	}
 
-	public Timestamp getTempo() {
+	
+
+	public Date getTempo() {
 		return tempo;
 	}
 
-	public void setTempo(Timestamp tempo) {
+
+	public void setTempo(Date tempo) {
 		this.tempo = tempo;
 	}
 

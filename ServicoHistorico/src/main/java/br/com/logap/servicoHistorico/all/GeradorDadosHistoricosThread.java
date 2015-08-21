@@ -1,15 +1,14 @@
 package br.com.logap.servicoHistorico.all;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 
@@ -35,7 +34,6 @@ public class GeradorDadosHistoricosThread implements Runnable {
 		inserirNaTabela(getHistoricos());
 		logger.info("operacao realizada com sucesso");
 		
-		Map<Long, Long> mapSensores = new HashMap<Long, Long>();
 	}
 	
 	protected void finalize (){
@@ -59,7 +57,7 @@ public class GeradorDadosHistoricosThread implements Runnable {
 			
 			for (int i = 0; i < historicos.size(); i++) {
 				stmt.setDouble(1, historicos.get(i).getValor());
-				stmt.setTimestamp(2, historicos.get(i).getTempo());
+				stmt.setDate(2, (Date) historicos.get(i).getTempo());
 				stmt.setLong(3, historicos.get(i).getId_sensor());
 				stmt.execute();
 			}
