@@ -2,25 +2,31 @@ package br.com.logap.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="fabricante")
-public class Fabricante extends Pessoa{	
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Fabricante extends PessoaJuridica{	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name="telefone_fabricante",nullable=false)
-	private String telefone;
+	
+	@Column(name="numero_funcionarios",nullable=true)
+	private int numeroFuncionarios;
 
-	public Fabricante(){}	
+	public Fabricante(){}
 
-	public String getTelefone() {
-		return telefone;
+	public int getNumeroFuncionarios() {
+		return numeroFuncionarios;
 	}
 
-	public void setTelefone(String telefone){
-		this.telefone = telefone;
-	}
+	public void setNumeroFuncionarios(int numeroFuncionarios) {
+		this.numeroFuncionarios = numeroFuncionarios;
+	}	
+
+	
 }

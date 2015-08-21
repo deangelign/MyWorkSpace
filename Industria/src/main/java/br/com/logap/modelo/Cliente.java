@@ -9,22 +9,24 @@ import javax.persistence.Table;
 @Entity
 @Table(name="cliente")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Cliente extends Pessoa{
+public class Cliente extends Usuario{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Column(name="telefone_cliente",nullable=false)
-	private String telefone;
+	
+	@Column(name="numero_cartao",nullable=false)
+	private String numeroCartao;
 		
 	public Cliente(){}
+
+	public String getNumeroCartao() {
+		return numeroCartao;
+	}
+
+	public void setNumeroCartao(String numeroCartao) {
+		this.numeroCartao = numeroCartao;
+	}
 	
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
+	
 }

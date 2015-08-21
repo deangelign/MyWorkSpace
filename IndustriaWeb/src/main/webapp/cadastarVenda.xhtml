@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
+    <h:head>
+        <title>Cadastar Venda</title>
+    </h:head>
+    
+    <h:body>    
+       	<h3>
+        	<h:outputText value="#{loginBean.login}"/>, ira cadastra uma venda.
+      	</h3>
+      	
+       	<h:panelGrid id="infoVenda" columns="2" style="margin-bottom:10px">
+   			<h:outputLabel for="nomeVendedor" value="Nome do Vendedor:" />
+       		<h:inputText id="nomeVendedor" value="#{cadastraVendaBean.nomeVendedor}"/>
+       		
+       		<h:outputLabel for="nomeCliente" value="Nome do Cliente:" />
+       		<h:inputText id="nomeClinte" value="#{cadastraVendaBean.nomeCliente}"/>
+       		
+       		<h:outputLabel for="entrega" value="Dados da Entrega:" />
+       		<h:inputText id="entrega" value="#{cadastraVendaBean.dadosEntrega}"/>
+       		
+       		<h:outputLabel for="valor" value="Valor:" />
+       		<h:inputSecret id="valor" value="#{loginBean.valor}"/>
+
+        	<h:commandButton value="Cadastrar Venda" action="#{loginBean.cadastraVenda}"/>        		
+    	</h:panelGrid>
+    </h:body>
+    
+</html>

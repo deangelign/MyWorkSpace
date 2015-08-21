@@ -22,7 +22,11 @@
         <mapping class="br.com.logap.modelo.Fornecedor"/>
         <mapping class="br.com.logap.modelo.Motorista"/>
         <mapping class="br.com.logap.modelo.Produto"/>
+        <mapping class="br.com.logap.modelo.ProdutoVenda"/>
+        <mapping class="br.com.logap.modelo.ProdutoAlmoxarifado"/>
         <mapping class="br.com.logap.modelo.TipoProduto"/>
+        <mapping class="br.com.logap.modelo.TipoProdutoAlmoxarifado"/>
+        <mapping class="br.com.logap.modelo.Usuario"/>
         <mapping class="br.com.logap.modelo.Veiculo"/>
         <mapping class="br.com.logap.modelo.Venda"/>
         <mapping class="br.com.logap.modelo.Vendedor"/>
