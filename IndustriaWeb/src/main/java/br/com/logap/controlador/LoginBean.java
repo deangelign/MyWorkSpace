@@ -1,6 +1,6 @@
 package br.com.logap.controlador;
 
-import br.com.logap.dao.HibernateDAO;
+import br.com.logap.dao.UsuarioDAO;
 import br.com.logap.modelo.Usuario;
 
 import javax.faces.bean.ManagedBean;
@@ -10,10 +10,17 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class LoginBean {
 
+	private Usuario usuario;
+	
 	private String login;
 	private String senha;
-
-	public LoginBean() {}
+	
+	public LoginBean() {		
+		usuario = new Usuario();
+	}
+	
+	public void acharUsuarios(){
+	}
 
 	public String getLogin() {
 		return login;
@@ -37,9 +44,12 @@ public class LoginBean {
 
 	public String validarUsuario(String login, String senha) {
 		String usuarioTeste = "teste";
-		String senhaTeste = "1234";
+		UsuarioDAO dao = new UsuarioDAO();
+		String senhaTeste= dao.acharPorLogin(login);
+		//String senhaTeste = "1234";
 
-		if ((login.equals(usuarioTeste)) && (senha.equals(senhaTeste))){
+	//	if ((login.equals(usuarioTeste)) && (senha.equals(senhaTeste))){
+		if ((senha.equals(senhaTeste))){			
 			return "home";
 		}else{
 			return "login";
