@@ -9,24 +9,62 @@
 	<ui:define name="tituloPagina">
 		Cadastro de Produto
 	</ui:define>
-	
-	
-	<ui:define name="corpo">
-		<h:panelGrid id="infoProduto" columns="2" style="margin-bottom:10px">
-    		<h:outputLabel for="nomeProduto" value="Nome do Produto:" />
-       		<h:inputText id="nomeProduto" />
-    		   		
-       		<h:outputLabel for="tipoProduto" value="Tipo do Produto:" />
-       		<h:inputText id="tipoProduto" />
-       		
-       		<h:outputLabel for="precoCompra" value="Preco Compra:" />
-       		<h:inputText id="precoCompra" />
-       		
-       		<h:outputLabel for="precoVenda" value="Preco Venda:" />
-       		<h:inputSecret id="precoVenda" />
 
-        	<h:commandButton value="Cadastrar Produto" />
-        </h:panelGrid>
+	<ui:define name="corpo">
+		 
+		 <h:form id="tabela">
+        	<h:dataTable id="tabela" var="produto" value="#{cadastrarProdutoBean.listarProdutos}" >
+        		<h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome Produto"/>
+                    </f:facet>
+                    <h:outputText value="#{produto.nomeProduto}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Tipo do Produto"/>
+                    </f:facet>
+                    <h:outputText value="#{produto.tipoProduto}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="preco de compra"/>
+                    </f:facet>
+                    <h:outputText value="#{produto.precoCompra}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Preco de venda"/>
+                    </f:facet>
+                    <h:outputText value="#{produto.precoVenda}"/>
+                </h:column>
+                
+        	</h:dataTable>
+        </h:form>
+		
+		
+		
+		<h:form id="cadastro">
+        
+			<h:panelGrid id="infoProduto" columns="2" style="margin-bottom:10px">
+    			<h:outputLabel for="nomeProduto" value="Nome do Produto:" />
+       			<h:inputText id="nomeProduto" value="#{cadastrarProdutoBean.produto.nomeProduto}" />
+    		   		
+       			<h:outputLabel for="tipoProduto" value="Tipo do Produto:" />
+       			<h:inputText id="tipoProduto" value="#{cadastrarProdutoBean.produto.tipoProduto}" />
+       		
+       			<h:outputLabel for="precoCompra" value="Preco Compra:" />
+       			<h:inputText id="precoCompra" value="#{cadastrarProdutoBean.produto.precoCompra}"/>
+       		       			<h:outputLabel for="precoVenda" value="Preco Venda:" />
+       			<h:inputText id="precoVenda" value="#{cadastrarProdutoBean.produto.precoVenda}"/>        	
+        	</h:panelGrid>
+        	
+        	<br />
+       		<h:commandButton value="Cadastrar Produto" action="#{cadastrarProdutoBean.cadastraProduto}" />
+	
+			<br />
+       		<h:commandButton value="Remover Produto" action="#{cadastrarProdutoBean.removerProduto}" />
+       	</h:form>
 	</ui:define>
 	
 </ui:composition>

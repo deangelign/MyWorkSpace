@@ -11,6 +11,38 @@
 	</ui:define>
 	
 	<ui:define name="corpo">
+	
+	<h:form id="tabela">
+        	<h:dataTable id="tabela" var="venda" value="#{cadastrarVendaBean.listarProdutos}" >
+        		<h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome Vendedor"/>
+                    </f:facet>
+                    <h:outputText value="#{venda.nomeVendedor}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome Cliente"/>
+                    </f:facet>
+                    <h:outputText value="#{venda.nomeCliente}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="dados da entrega"/>
+                    </f:facet>
+                    <h:outputText />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Valor"/>
+                    </f:facet>
+                    <h:outputText />
+                </h:column>
+                
+        	</h:dataTable>
+        </h:form>
+	
+	
        	<h:panelGrid id="infoVenda" columns="2" style="margin-bottom:10px">
    			<h:outputLabel for="nomeVendedor" value="Nome do Vendedor:" />
        		<h:inputText id="nomeVendedor" />
@@ -22,9 +54,9 @@
        		<h:inputText id="entrega" />
        		
        		<h:outputLabel for="valor" value="Valor:" />
-       		<h:inputSecret id="valor" value="#{loginBean.valor}"/>
+       		<h:inputSecret id="valor" />
 
-        	<h:commandButton value="Cadastrar Venda" action="#{loginBean.cadastraVenda}"/>        		
+        	<h:commandButton value="Cadastrar Venda" />        		
     	</h:panelGrid>
 	</ui:define>
 	
