@@ -16,7 +16,7 @@ public class Usuario extends PessoaFisica{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="login",nullable=false)
+	@Column(name="login",nullable=false, unique=true)
 	private String login;
 	
 	@Column(name="senha",nullable=false)
