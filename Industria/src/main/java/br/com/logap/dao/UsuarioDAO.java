@@ -21,13 +21,13 @@ public class UsuarioDAO extends HibernateDAO<Usuario> {
 		Session session = sessionManager.getSession();
 		Query q = session.createQuery("from Usuario where login=:login");
 		q.setString("login", login);
-		usuarios = q.list();		
-		System.out.println("senha " +usuarios.get(0).getSenha());
-		
-		session.close();
-		
-		return usuarios.get(0).getSenha();
-		
+		if(q!=null){
+			usuarios = q.list();		
+			System.out.println("senha " +usuarios.get(0).getSenha());
+			session.close();
+			return usuarios.get(0).getSenha();
+		}
+		return "";
 	}
 	
 }
