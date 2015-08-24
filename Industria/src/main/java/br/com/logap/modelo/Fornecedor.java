@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="fornecedor")
@@ -17,7 +18,10 @@ public class Fornecedor extends PessoaJuridica{
 	
 	@Column(name="representante_comercial",nullable=true)
 	private String representanteComercial;
-		
+	
+	@Transient
+	boolean editable;
+	
 	public Fornecedor(){}
 
 	public String getRepresentanteComercial() {
@@ -27,6 +31,15 @@ public class Fornecedor extends PessoaJuridica{
 	public void setRepresentanteComercial(String representanteComercial) {
 		this.representanteComercial = representanteComercial;
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+
 	
 	
 }

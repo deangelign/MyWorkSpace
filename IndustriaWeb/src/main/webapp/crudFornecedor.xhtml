@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/layout.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+
+	<ui:define name="titulo">Usuarios</ui:define>
+
+	<ui:define name="corpo">
+
+
+		<f:metadata>
+			<f:viewAction action="#{fornecedorBean.atualizarLista}" />
+		</f:metadata>
+
+
+
+
+		<div class="row">
+			<div class="col-lg-12">
+
+				<h1 class="page-header">CRUD fornecedors</h1>
+
+				<div class="panel-body">
+					<h4 class="page-header">Cadastro</h4>
+
+					<h:form id="formLogin">
+						<div class="form-group">
+							<h:inputText class="form-control" pt:placeholder="Nome completo"
+								required="true" value="#{fornecedorBean.fornecedor.nome}" />
+						</div>
+
+						<div class="form-group">
+							<h:message for="email" style="color: red;" />
+							<h:inputText class="form-control" id="email"
+								pt:placeholder="Email" required="true"
+								requiredMessage="Por favor digite um Email"
+								value="#{fornecedorBean.fornecedor.email}">
+							</h:inputText>
+						</div>
+
+						<div class="form-group">
+							<h:message for="endereco" style="color: red;" />
+							<h:inputText class="form-control" id="endereco"
+								pt:placeholder="endereco" required="true"
+								requiredMessage="Por favor digite um endereco"
+								value="#{fornecedorBean.fornecedor.endereco}">
+							</h:inputText>
+						</div>
+
+
+						<div class="form-group">
+							<h:message for="telefone" style="color: red;" />
+							<h:inputText class="form-control" id="telefone"
+								pt:placeholder="telefone" required="true"
+								requiredMessage="Por favor digite um telefone"
+								value="#{fornecedorBean.fornecedor.telefone}">
+							</h:inputText>
+						</div>
+
+						<div class="form-group">
+							<h:message for="cnpj" style="color: red;" />
+							<h:inputText class="form-control" id="cnpj" pt:placeholder="cnpj"
+								required="true" requiredMessage="Por favor digite um cnpj"
+								value="#{fornecedorBean.fornecedor.cnpj}">
+							</h:inputText>
+						</div>
+
+
+						<div class="form-group">
+							<h:message for="sigla" style="color: red;" />
+							<h:inputText class="form-control" id="sigla"
+								pt:placeholder="sigla" required="false"
+								value="#{fornecedorBean.fornecedor.sigla}">
+							</h:inputText>
+						</div>
+
+						<div class="form-group">
+							<h:message for="representanteComercial" style="color: red;" />
+							<h:inputSecret id="representanteComercial" class="form-control"
+								pt:placeholder="representante comercial" required="false"
+								value="#{fornecedorBean.fornecedor.representanteComercial}">
+							</h:inputSecret>
+
+						</div>
+
+
+						<h:commandButton value="Cadastrar" class="btn btn-primary"
+							action="#{fornecedorBean.cadastrar}" />
+					</h:form>
+
+
+
+
+					<h:form id="tabela">
+						<h4 class="page-header">fornecedors</h4>
+						<h:dataTable value="#{fornecedorBean.fornecedors}" var="_fornecedor"
+							id="tabelafornecedors" styleClass="table table-condensed">
+
+							<h:column>
+
+								<f:facet name="header"> Nome </f:facet>
+
+								<h:inputText value="#{_fornecedor.nome}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.nome}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+							<h:column>
+								<f:facet name="header"> Email </f:facet>
+
+								<h:inputText value="#{_fornecedor.email}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.email}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> endereco </f:facet>
+
+								<h:inputText value="#{_fornecedor.endereco}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.endereco}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> telefone </f:facet>
+
+								<h:inputText value="#{_fornecedor.telefone}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.telefone}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> cnpj </f:facet>
+
+								<h:inputText value="#{_fornecedor.cnpj}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.cnpj}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> numero Funcionarios </f:facet>
+
+								<h:inputText value="#{_fornecedor.representanteComercial}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.representanteComercial}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> sigla </f:facet>
+
+								<h:inputText value="#{_fornecedor.sigla}" size="10"
+									rendered="#{_fornecedor.editable}" />
+								<h:outputText value="#{_fornecedor.sigla}"
+									rendered="#{not _fornecedor.editable}" />
+
+							</h:column>
+
+
+
+
+							<h:column>
+
+								<f:facet name="header">Action</f:facet>
+
+								<h:commandLink value="Editar"
+									action="#{fornecedorBean.editAction(_fornecedor)}"
+									rendered="#{not _fornecedor.editable}">
+
+								</h:commandLink>
+
+								<h:outputText value="&#160;" />
+
+								<h:commandLink value="Deletar"
+									action="#{fornecedorBean.deletarAction(_fornecedor)}">
+
+								</h:commandLink>
+
+
+
+							</h:column>
+
+						</h:dataTable>
+
+						<h:commandButton value="Salvar alteracoes"
+							action="#{fornecedorBean.salvarAlteracoesAction}" />
+
+
+					</h:form>
+
+
+
+				</div>
+
+
+
+			</div>
+		</div>
+
+
+
+	</ui:define>
+
+</ui:composition>
