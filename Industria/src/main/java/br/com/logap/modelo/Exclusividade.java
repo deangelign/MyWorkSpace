@@ -18,15 +18,18 @@ public class Exclusividade extends ModeloPersistencia{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_fornecedor")
 	private Fornecedor fornecedor;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_fabricante")
 	private Fabricante fabricante;
 	
-	public Exclusividade(){}
+	public Exclusividade(){
+		fornecedor = new Fornecedor();
+		fabricante = new Fabricante();
+	}
 
 	public Fornecedor getFornecedor() {
 		return fornecedor;
