@@ -98,7 +98,7 @@
 
 						<div class="form-group">
 							<h:message for="numeroFuncionario" style="color: red;" />
-							<h:inputText class="form-control" id="numeroCartao"
+							<h:inputText class="form-control" id="numeroFuncionario"
 								pt:placeholder="numero do funcionario" required="true"
 								requiredMessage="Por favor digite um numero de Cartao"
 								value="#{vendedorBean.vendedor.numeroVendedor}">
@@ -227,6 +227,26 @@
 							</h:column>
 
 
+							<h:column>
+
+								<f:facet name="header">Action</f:facet>
+
+								<h:commandLink value="Editar"
+									action="#{vendedorBean.editAction(_vendedor)}"
+									rendered="#{not _vendedor.editable}">
+
+								</h:commandLink>
+
+								<h:outputText value="&#160;" />
+
+								<h:commandLink value="Deletar"
+									action="#{vendedorBean.deletarAction(_vendedor)}">
+
+								</h:commandLink>
+
+
+
+							</h:column>
 
 
 
@@ -236,6 +256,10 @@
 
 
 						</h:dataTable>
+
+						<h:commandButton value="Salvar alteracoes"
+							action="#{vendedorBean.salvarAlteracoesAction}" />
+
 
 
 					</h:form>

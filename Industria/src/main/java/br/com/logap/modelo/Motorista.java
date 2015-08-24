@@ -9,6 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="motorista")
@@ -26,6 +27,8 @@ public class Motorista extends PessoaFisica{
 	@Column(name="numero_habilitacao",nullable=false)
 	private String numeroHabilitacao;
 	
+	@Transient
+	boolean editable;
 	
 	public Motorista(){}
 
@@ -44,6 +47,15 @@ public class Motorista extends PessoaFisica{
 	public void setNumeroHabilitacao(String numeroHabilitacao) {
 		this.numeroHabilitacao = numeroHabilitacao;
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	
 	
 	
 }

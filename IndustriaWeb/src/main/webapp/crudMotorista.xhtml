@@ -13,7 +13,7 @@
 
 
 		<f:metadata>
-			<f:viewAction action="#{clienteBean.atualizarLista}" />
+			<f:viewAction action="#{motoristaBean.atualizarLista}" />
 		</f:metadata>
 
 
@@ -22,7 +22,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 
-				<h1 class="page-header">CRUD clientes</h1>
+				<h1 class="page-header">CRUD motorista</h1>
 
 				<div class="panel-body">
 					<h4 class="page-header">Cadastro</h4>
@@ -30,20 +30,13 @@
 					<h:form id="formLogin">
 						<div class="form-group">
 							<h:inputText class="form-control" pt:placeholder="Nome completo"
-								required="true" value="#{clienteBean.usuario.nome}" />
+								required="true" value="#{motoristaBean.motorista.nome}" />
 						</div>
-
-						<div class="form-group">
-							<h:inputText class="form-control" pt:placeholder="Login"
-								required="true" value="#{clienteBean.usuario.login}" />
-						</div>
-
-
 
 						<div class="form-group">
 							<h:message for="sexo" style="color: red;" />
 
-							<h:selectOneRadio id="sexo" value="#{clienteBean.usuario.sexo}"
+							<h:selectOneRadio id="sexo" value="#{motoristaBean.motorista.sexo}"
 								required="true" requiredMessage="selecione um sexo">
 								<f:selectItem itemValue="M" itemLabel="Masculino" />
 								<f:selectItem itemValue="F" itemLabel="Feminino" />
@@ -55,7 +48,7 @@
 							<h:inputText class="form-control" id="email"
 								pt:placeholder="Email" required="true"
 								requiredMessage="Por favor digite um Email"
-								value="#{clienteBean.usuario.email}">
+								value="#{motoristaBean.motorista.email}">
 							</h:inputText>
 						</div>
 
@@ -64,7 +57,7 @@
 							<h:inputText class="form-control" id="endereco"
 								pt:placeholder="endereco" required="true"
 								requiredMessage="Por favor digite um endereco"
-								value="#{clienteBean.usuario.endereco}">
+								value="#{motoristaBean.motorista.endereco}">
 							</h:inputText>
 						</div>
 
@@ -74,7 +67,7 @@
 							<h:inputText class="form-control" id="telefone"
 								pt:placeholder="telefone" required="true"
 								requiredMessage="Por favor digite um telefone"
-								value="#{clienteBean.usuario.telefone}">
+								value="#{motoristaBean.motorista.telefone}">
 							</h:inputText>
 						</div>
 
@@ -82,7 +75,7 @@
 							<h:message for="cpf" style="color: red;" />
 							<h:inputText class="form-control" id="cpf" pt:placeholder="cpf"
 								required="true" requiredMessage="Por favor digite um cpf"
-								value="#{clienteBean.usuario.cpf}">
+								value="#{motoristaBean.motorista.cpf}">
 							</h:inputText>
 						</div>
 
@@ -91,83 +84,63 @@
 							<h:inputText class="form-control" id="idade"
 								pt:placeholder="idade" required="true"
 								requiredMessage="Por favor digite uma idade"
-								value="#{clienteBean.usuario.idade}">
+								value="#{motoristaBean.motorista.idade}">
 							</h:inputText>
 						</div>
 
 
 						<div class="form-group">
-							<h:message for="numeroCartao" style="color: red;" />
-							<h:inputText class="form-control" id="numeroCartao"
-								pt:placeholder="numero do Cartao" required="true"
-								requiredMessage="Por favor digite um numero de Cartao"
-								value="#{clienteBean.cliente.numeroCartao}">
+							<h:message for="numeroHabilitacao" style="color: red;" />
+							<h:inputText class="form-control" id="numeroHabilitacao"
+								pt:placeholder="numero de habilitacao" required="true"
+								requiredMessage="Por favor digite o numero da carteira de Habilitacao"
+								value="#{motoristaBean.motorista.numeroHabilitacao}">
 							</h:inputText>
 						</div>
-
-						<div class="form-group">
-							<h:message for="password" style="color: red;" />
-							<h:inputSecret id="password" class="form-control"
-								pt:placeholder="Senha" required="true"
-								requiredMessage="Por favor digite a senha"
-								value="#{clienteBean.usuario.senha}">
-							</h:inputSecret>
-
-						</div>
-
 
 						<h:commandButton value="Cadastrar" class="btn btn-primary"
-							action="#{clienteBean.cadastrar}" />
+							action="#{motoristaBean.cadastrar}" />
 					</h:form>
 
 
 
 
 					<h:form id="tabela">
-						<h4 class="page-header">clientes</h4>
-						<h:dataTable value="#{clienteBean.clientes}" var="_cliente"
-							id="tabelaClientes" styleClass="table table-condensed">
+						<h4 class="page-header">motorista</h4>
+						<h:dataTable value="#{motoristaBean.motoristas}" var="_motorista"
+							id="tabelamotoristas" styleClass="table table-condensed">
 
 							<h:column>
 
 								<f:facet name="header"> Nome </f:facet>
 
-								<h:inputText value="#{_cliente.nome}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.nome}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.nome}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.nome}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
 
-							<h:column>
-								<f:facet name="header"> login </f:facet>
-
-								<h:inputText value="#{_cliente.login}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.login}"
-									rendered="#{not _cliente.editable}" />
-
-							</h:column>
 
 
 							<h:column>
 								<f:facet name="header"> Sexo </f:facet>
 
-								<h:inputText value="#{_cliente.sexo}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.sexo}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.sexo}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.sexo}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
 							<h:column>
 								<f:facet name="header"> Email </f:facet>
 
-								<h:inputText value="#{_cliente.email}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.email}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.email}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.email}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
@@ -175,10 +148,10 @@
 							<h:column>
 								<f:facet name="header"> endereco </f:facet>
 
-								<h:inputText value="#{_cliente.endereco}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.endereco}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.endereco}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.endereco}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
@@ -186,10 +159,10 @@
 							<h:column>
 								<f:facet name="header"> telefone </f:facet>
 
-								<h:inputText value="#{_cliente.telefone}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.telefone}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.telefone}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.telefone}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
@@ -197,10 +170,10 @@
 							<h:column>
 								<f:facet name="header"> cpf </f:facet>
 
-								<h:inputText value="#{_cliente.cpf}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.cpf}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.cpf}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.cpf}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
 
@@ -208,25 +181,12 @@
 							<h:column>
 								<f:facet name="header"> numero Cartao </f:facet>
 
-								<h:inputText value="#{_cliente.numeroCartao}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.numeroCartao}"
-									rendered="#{not _cliente.editable}" />
+								<h:inputText value="#{_motorista.numeroHabilitacao}" size="10"
+									rendered="#{_motorista.editable}" />
+								<h:outputText value="#{_motorista.numeroHabilitacao}"
+									rendered="#{not _motorista.editable}" />
 
 							</h:column>
-
-
-							<h:column>
-								<f:facet name="header"> senha </f:facet>
-
-								<h:inputText value="#{_cliente.senha}" size="10"
-									rendered="#{_cliente.editable}" />
-								<h:outputText value="#{_cliente.senha}"
-									rendered="#{not _cliente.editable}" />
-
-							</h:column>
-
-
 
 
 							<h:column>
@@ -234,15 +194,15 @@
 								<f:facet name="header">Action</f:facet>
 
 								<h:commandLink value="Editar"
-									action="#{clienteBean.editAction(_cliente)}"
-									rendered="#{not _cliente.editable}">
+									action="#{motoristaBean.editAction(_motorista)}"
+									rendered="#{not _motorista.editable}">
 
 								</h:commandLink>
 
 								<h:outputText value="&#160;" />
 
 								<h:commandLink value="Deletar"
-									action="#{clienteBean.deletarAction(_cliente)}">
+									action="#{motoristaBean.deletarAction(_motorista)}">
 
 								</h:commandLink>
 
@@ -253,7 +213,7 @@
 						</h:dataTable>
 
 						<h:commandButton value="Salvar alteracoes"
-							action="#{clienteBean.salvarAlteracoesAction}" />
+							action="#{motoristaBean.salvarAlteracoesAction}" />
 
 
 					</h:form>

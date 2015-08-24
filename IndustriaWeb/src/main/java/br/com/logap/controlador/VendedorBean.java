@@ -51,6 +51,7 @@ public class VendedorBean {
 			
 			vendedor.update(usuario);
 			vendedorDAO.inserir(vendedor);
+			atualizarLista();
 			
 		}
 
@@ -91,6 +92,10 @@ public class VendedorBean {
 		public void salvarAlteracoesAction(){
 			vendedorDAO.atualizarLista(Vendedores);
 			this.atualizarLista();
+		}
+		
+		public void editAction(Vendedor vendedor){
+			vendedor.setEditable(true);
 		}
 
 
