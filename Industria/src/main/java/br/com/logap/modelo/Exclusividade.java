@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.logap.dao.ModeloPersistencia;
 
@@ -25,6 +26,8 @@ public class Exclusividade extends ModeloPersistencia{
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_fabricante")
 	private Fabricante fabricante;
+	
+	
 	
 	public Exclusividade(){
 		fornecedor = new Fornecedor();
@@ -46,6 +49,7 @@ public class Exclusividade extends ModeloPersistencia{
 	public void setFabricante(Fabricante fabricante) {
 		this.fabricante = fabricante;
 	}
+	
 	
 	
 	

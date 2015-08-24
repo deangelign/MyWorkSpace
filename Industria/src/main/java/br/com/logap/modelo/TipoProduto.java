@@ -15,27 +15,23 @@ public class TipoProduto extends ModeloPersistencia{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="tipo_produto")
-	private int tipoProduto;
+	@Column(name="nome_tipo", nullable=false, unique=true)
+	private String nomeTipo;
 	
-	@Column(name="id_produto")
-	private long idProduto;
 	
 	public TipoProduto(){}
 
-	public int getTipoProduto() {
-		return tipoProduto;
+
+	public String getNomeTipo() {
+		return nomeTipo;
 	}
 
-	public void setTipoProduto(int tipoProduto) {
-		this.tipoProduto = tipoProduto;
+
+	public void setNomeTipo(String nomeTipo) {
+		this.nomeTipo = nomeTipo;
 	}
 
-	public long getIdProduto() {
-		return idProduto;
-	}
-
-	public void setIdProduto(long idProduto) {
-		this.idProduto = idProduto;
-	}
+	
+	
+	
 }

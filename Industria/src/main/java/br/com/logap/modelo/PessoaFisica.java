@@ -16,10 +16,7 @@ public class PessoaFisica extends Pessoa {
 	
 	@Column(name="cpf", nullable=false)
 	private String cpf;
-	
-	@Column(name="RG", nullable=true)
-	private String RG;
-	
+		
 	@Column(name="sexo", nullable=false) 
 	private char sexo;
 
@@ -42,13 +39,7 @@ public class PessoaFisica extends Pessoa {
 		this.cpf = cpf;
 	}
 
-	public String getRG() {
-		return RG;
-	}
 
-	public void setRG(String rG) {
-		RG = rG;
-	}
 
 	public char getSexo() {
 		return sexo;
