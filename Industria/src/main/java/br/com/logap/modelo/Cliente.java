@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="cliente")
@@ -17,7 +18,10 @@ public class Cliente extends Usuario{
 	
 	@Column(name="numero_cartao",nullable=false)
 	private String numeroCartao;
-		
+	
+	@Transient
+	boolean editable;
+	
 	public Cliente(){}
 
 	public String getNumeroCartao() {
@@ -27,6 +31,30 @@ public class Cliente extends Usuario{
 	public void setNumeroCartao(String numeroCartao) {
 		this.numeroCartao = numeroCartao;
 	}
+	
+	public void  update(Usuario usuario){
+		setNome(usuario.getNome());
+		setCpf(usuario.getCpf());
+		setEmail(usuario.getEmail());
+		setEndereco(usuario.getEndereco());
+		setIdade(usuario.getIdade());
+		setLogin(usuario.getLogin());
+		//setRG(usuario.getRG());
+		setSenha(usuario.getSenha());
+		setSexo(usuario.getSexo());
+		setTelefone(usuario.getTelefone());
+		setTipoUsuario(usuario.getTipoUsuario());
+	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	
+	
 	
 	
 }

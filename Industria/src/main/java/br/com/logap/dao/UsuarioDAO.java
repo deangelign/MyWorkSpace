@@ -3,8 +3,10 @@ package br.com.logap.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.logap.modelo.Usuario;
 
@@ -28,6 +30,16 @@ public class UsuarioDAO extends HibernateDAO<Usuario> {
 			return usuarios.get(0).getSenha();
 		}
 		return "";
+	}
+	
+	public Usuario buscarPorLogin(String login){
+		Session session = getSession();
+		String hql = "from Usuario as user where user.login = :userLogin";
+		Query query = session.createQuery(hql).setString("userLogin", login);
+		
+		
+		Usuario usuario = (Usuario) query.uniqueResult();
+		return usuario;
 	}
 	
 }

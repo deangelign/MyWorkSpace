@@ -1,5 +1,7 @@
 package br.com.logap.dao;
 
+import java.util.List;
+
 
 
 public interface DAO <T extends ModeloPersistencia> {
@@ -10,5 +12,9 @@ public interface DAO <T extends ModeloPersistencia> {
 	void remover(T entidade);
 	
 	T buscar(Long id);
+	
+	List<T> buscarTodos();
+	
+	
 	
 }
