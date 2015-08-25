@@ -128,6 +128,7 @@ public class ProdutoAlmoxarifadoBean {
 	
 	public void salvarAlteracoesAction(){
 		produtoAlmoxarifadoDAO.atualizarLista(produtoAlmoxarifados);
+		this.atualizarLista();
 	}
 	
 

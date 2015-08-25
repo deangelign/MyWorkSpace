@@ -19,11 +19,11 @@ public class TipoProdutoAlmoxarifado extends ModeloPersistencia {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_tipo_produto")
 	private TipoProduto tipoProduto;
 		
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_almoxarifado")
 	private Almoxarifado almoxarifado;
 	
@@ -31,6 +31,8 @@ public class TipoProdutoAlmoxarifado extends ModeloPersistencia {
 	boolean editable;
 
 	public TipoProdutoAlmoxarifado() {
+		almoxarifado = new Almoxarifado();
+		tipoProduto = new TipoProduto();
 	}
 	
 	public TipoProduto getTipoProduto() {
