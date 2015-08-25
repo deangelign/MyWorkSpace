@@ -6,6 +6,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.logap.dao.ModeloPersistencia;
 
@@ -18,13 +19,16 @@ public class TipoProdutoAlmoxarifado extends ModeloPersistencia {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_tipo_produto")
 	private TipoProduto tipoProduto;
 		
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_almoxarifado")
 	private Almoxarifado almoxarifado;
+	
+	@Transient
+	boolean editable;
 
 	public TipoProdutoAlmoxarifado() {
 	}
@@ -44,6 +48,16 @@ public class TipoProdutoAlmoxarifado extends ModeloPersistencia {
 	public void setAlmoxarifado(Almoxarifado almoxarifado) {
 		this.almoxarifado = almoxarifado;
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	
+	
 
 
 

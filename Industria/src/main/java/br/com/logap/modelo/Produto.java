@@ -25,16 +25,16 @@ public class Produto extends ModeloPersistencia {
 	private String nomeProduto;
 		
 	@Column(name = "preco_Compra", nullable = false)
-	private String precoCompra;
+	private Double precoCompra;
 	
 	@Column(name = "preco_Venda", nullable = false)
-	private Long precoVenda;	
+	private Double precoVenda;	
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_exclusividade", nullable = true)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_exclusividade", nullable = false)
 	private Exclusividade exclusividade;
 	
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_produto", nullable = false)
 	private TipoProduto tipoProduto;
 	
@@ -54,20 +54,22 @@ public class Produto extends ModeloPersistencia {
 		this.nomeProduto = nomeProduto;
 	}
 
-	public String getPrecoCompra() {
+	public Double getPrecoCompra() {
 		return precoCompra;
 	}
 
-	public void setPrecoCompra(String precoCompra) {
+
+	public void setPrecoCompra(Double precoCompra) {
 		this.precoCompra = precoCompra;
 	}
-	
-	
-	public Long getPrecoVenda() {
+
+
+	public Double getPrecoVenda() {
 		return precoVenda;
 	}
 
-	public void setPrecoVenda(Long precoVenda) {
+
+	public void setPrecoVenda(Double precoVenda) {
 		this.precoVenda = precoVenda;
 	}
 

@@ -77,8 +77,7 @@ public class ProdutoBean {
 			produto.setExclusividade(exclusividade1);
 			produto.setTipoProduto(tipoProduto1);
 			produtoDAO.inserir(produto);			
-			atualizarLista();
-			
+			atualizarLista();			
 		}
 		
 		public void editAction(Produto produto){

@@ -13,6 +13,7 @@
 
 
 		<f:metadata>
+			<f:viewAction action="#{produtoBean.atualizarLista}" />
 			<f:viewAction action="#{produtoBean.atualizarListas}" />
 		</f:metadata>
 
@@ -28,47 +29,56 @@
 					<h4 class="page-header">Cadastro</h4>
 
 					<h:form id="form">
+						<h:message for="nomeProduto" style="color: red;" />
 						<div class="form-group">
-							<h:message for="nomeProduto" style="color: red;" />
+							
 							<h:inputText id="nomeProduto" class="form-control"
 								pt:placeholder="Nome produto" required="true"
-								value="#{produtoBean.produto.nomeProduto}" />
+								value="#{produtoBean.produto.nomeProduto}" 
+								requiredMessage="por favor, inserir o nome do produto" />
 						</div>
-
+						
+						<h:message for="precoCompra" style="color: red;" />
 						<div class="form-group">
-							<h:message for="precoCompra" style="color: red;" />
+							
 							<h:inputText id="precoCompra" class="form-control"
 								pt:placeholder="preco compra" required="true"
-								value="#{produtoBean.produto.precoCompra}" />
+								value="#{produtoBean.produto.precoCompra}"
+								requiredMessage="por favor, inserir o valor de compra" />
 						</div>
 
-
+						<h:message for="precoVenda" style="color: red;" />
 						<div class="form-group">
-							<h:message for="precoVenda" style="color: red;" />
+							
 							<h:inputText id="precoVenda" class="form-control"
 								pt:placeholder="preco venda" required="true"
-								value="#{produtoBean.produto.precoVenda}" />
+								value="#{produtoBean.produto.precoVenda}" 
+								requiredMessage="por favor, inserir o valor de venda"/>
 						</div>
 
+						<h:message for="caixaSelecaoExclusividade" style="color: red;" />
 						<div class="form-group">
+							
 							<h:selectOneMenu label="Exclusividade"
 								id="caixaSelecaoExclusividade"
 								value="#{produtoBean.exclusividade.id}"
-								class="btn btn-default dropdown-toggle">
+								class="btn btn-default dropdown-toggle" required="true"
+								requiredMessage="Por favor selecione uma exclusividade">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{produtoBean.exclusividades}"
 									var="_exclusividade" itemValue="#{_exclusividade.id}"
-									itemLabel="#{_exclusividade.fornecedor.nome}  #{_exclusividade.fabricante.nome}" />
+									itemLabel="#{_exclusividade.fornecedor.nome} : #{_exclusividade.fabricante.nome}" />
 
 							</h:selectOneMenu>
 						</div>
 
+						<h:message for="caixaSelecaoTipo" style="color: red;" />
 						<div class="form-group">
-							<h:message for="caixaSelecaoTipo" style="color: red;" />
+							
 							<h:selectOneMenu label="tipo" id="caixaSelecaoTipo"
 								value="#{produtoBean.tipoProduto.id}"
-								class="btn btn-default dropdown-toggle"
-								required= "true" requiredMessage="Por favor selecione um tipo">
+								class="btn btn-default dropdown-toggle" required="true"
+								requiredMessage="Por favor selecione um tipo">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{produtoBean.tipoProdutos}"
 									var="_tipoProduto" itemValue="#{_tipoProduto.id}"
@@ -95,10 +105,88 @@
 									rendered="#{not _produto.editable}" />
 							</h:column>
 
+							<h:column>
+								<f:facet name="header"> preco compra </f:facet>
+								<h:inputText value="#{_produto.precoCompra}" size="10"
+									rendered="#{_produto.editable}" />
+								<h:outputText value="#{_produto.precoCompra}"
+									rendered="#{not _produto.editable}" />
+							</h:column>
 
-							
+							<h:column>
+								<f:facet name="header"> preco venda </f:facet>
+								<h:inputText value="#{_produto.precoVenda}" size="10"
+									rendered="#{_produto.editable}" />
+								<h:outputText value="#{_produto.precoVenda}"
+									rendered="#{not _produto.editable}" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header"> exclusividade </f:facet>
+								<h:outputText
+									value="#{_produto.exclusividade.fornecedor.nome} : #{_produto.exclusividade.fabricante.nome}"
+									rendered="#{not _produto.editable}" />
+
+								<h:selectOneMenu label="Exclusividade"
+									id="caixaSelecaoExclusividade"
+									value="#{_produto.exclusividade.id}"
+									class="btn btn-default dropdown-toggle"
+									rendered="#{_produto.editable}" required="false">
+									<f:selectItem itemValue="#{null}" itemLabel="Selecione" />
+									<f:selectItems value="#{produtoBean.exclusividades}"
+										var="_exclusividade" itemValue="#{_exclusividade.id}"
+										itemLabel="#{_exclusividade.fornecedor.nome} : #{_exclusividade.fabricante.nome}" />
+
+								</h:selectOneMenu>
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> tipo </f:facet>
+
+
+								<h:outputText value="#{_produto.tipoProduto.nomeTipo}"
+									rendered="#{not _produto.editable}" />
+
+								<h:selectOneMenu label="tipoProduto" id="caixaSelecaoProduto"
+									value="#{_produto.tipoProduto.id}"
+									class="btn btn-default dropdown-toggle"
+									rendered="#{_produto.editable}" required="true"
+									requiredMessage="Por favor selecione um tipo">
+									<f:selectItem itemLabel="Selecione" />
+									<f:selectItems value="#{produtoBean.tipoProdutos}"
+										var="_tipoProduto" itemValue="#{_tipoProduto.id}"
+										itemLabel="#{_tipoProduto.nomeTipo}" />
+
+								</h:selectOneMenu>
+							</h:column>
+
+
+							<h:column>
+
+								<f:facet name="header">Action</f:facet>
+
+								<h:commandLink value="Editar"
+									action="#{produtoBean.editAction(_produto)}"
+									rendered="#{not _produto.editable}">
+
+								</h:commandLink>
+
+								<h:outputText value="&#160;" />
+
+								<h:commandLink value="Deletar"
+									action="#{produtoBean.deletarAction(_produto)}">
+
+								</h:commandLink>
+
+
+
+							</h:column>
 
 						</h:dataTable>
+
+						<h:commandButton value="Salvar alteracoes"
+							action="#{produtoBean.salvarAlteracoesAction}" />
 
 
 

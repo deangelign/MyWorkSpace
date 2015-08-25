@@ -29,13 +29,17 @@
 
 					<h:form id="formLogin">
 						<div class="form-group">
+							<h:message for="nomeField" style="color: red;" />
 							<h:inputText class="form-control" pt:placeholder="Nome completo"
-								required="true" value="#{clienteBean.usuario.nome}" />
+								id = "nomeField"required="true" value="#{clienteBean.usuario.nome}"
+								requiredMessage="Digite seu nome" />
 						</div>
 
 						<div class="form-group">
-							<h:inputText class="form-control" pt:placeholder="Login"
-								required="true" value="#{clienteBean.usuario.login}" />
+							<h:message for="loginField" style="color: red;" />
+							<h:inputText class="form-control" pt:placeholder="Login" id="loginField"
+								required="true" value="#{clienteBean.usuario.login}" 
+								requiredMessage="Voce precisa espicificar seu login"/>
 						</div>
 
 
