@@ -27,8 +27,11 @@ public class HistoricoController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/buscarPontos")
 	public List<Historico> buscarPontos(Parametros parametros) {
-		SimpleDateFormat sfm = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sfm = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 		List<Historico> dadosHistoricos = Collections.emptyList();
+		System.out.println(parametros.getDataInicio());
+		System.out.println(parametros.getDataFim());
+		
 		try {
 			dadosHistoricos = historicoHibernateDAO.buscarHistoricoDoGrafico(parametros.getId(), sfm.parse(parametros.getDataInicio()), sfm.parse(parametros.getDataFim()));
 		} catch (ParseException e) {

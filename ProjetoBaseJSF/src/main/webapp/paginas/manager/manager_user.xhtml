@@ -23,14 +23,17 @@
 							<h4 class="page-header">Cadastro</h4>
 
 							<h:form id="formLogin">
+								<h:message for="nomeField" style="color: red;" />
 								<div class="form-group">
-									<h:inputText class="form-control"
+									<h:inputText class="form-control" id="nomeField"
 										pt:placeholder="Nome do usuario"
-										value="#{managerUserBean.usuario.nome}" required="true" />
+										value="#{managerUserBean.usuario.nome}" required="true"
+										requiredMessage="Por favor digite o seu login" />
 								</div>
-
+								
+								<h:message for="emailField" style="color: red;" />
 								<div class="form-group">
-									<h:inputText class="form-control" id="email"
+									<h:inputText class="form-control" id="emailField"
 										pt:placeholder="Email"
 										value="#{managerUserBean.usuario.email}" required="true"
 										requiredMessage="Por favor digite um Email">
@@ -39,8 +42,11 @@
 									</h:inputText>
 
 								</div>
-								<h:message for="email" style="color: red;" />
-
+								
+								<h:message for="password" style="color: red;" />
+								
+								
+								
 								<div class="form-group">
 									<h:inputSecret id="password" class="form-control"
 										pt:placeholder="Senha"
@@ -51,9 +57,8 @@
 										<f:attribute name="confirmPassword" value="#{confirmPassword}" />
 
 									</h:inputSecret>
-									<h:message for="password" style="color: red;" />
 								</div>
-
+								<h:message for="confirmPassword" style="color: red;" />
 								<div class="form-group">
 									<h:inputSecret class="form-control" id="confirmPassword"
 										pt:placeholder="Digite a senha novamente"
@@ -61,8 +66,7 @@
 										value="#{managerUserBean.usuario.confirmarSenha}"
 										required="true" requiredMessage="Por favor confirme a senha" />
 								</div>
-								<h:message for="confirmPassword" style="color: red;" />
-
+								
 								<h:commandButton value="Cadastrar"
 									action="#{managerUserBean.cadastrar}" class="btn btn-primary" />
 							</h:form>

@@ -42,6 +42,7 @@ public class ManagerUserBean extends AbstractBean{
 
 		 usuarioService.salvar(usuario);
 		 atualizarLista();
+		 usuario = new Usuario();
 	}
 	
 	public String editAction(Usuario usuario){

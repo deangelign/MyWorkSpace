@@ -15,15 +15,19 @@
 					<h1 class="page-header">Gerenciar Sensores</h1>
 
 					<h:form>
+						<h4 class="page-header">Cadastro</h4>
+						<h:message for="caixaSelecaoEquipamento" style="color: red;" />
 						<div class="form-group">
-							<h4 class="page-header">Cadastro</h4>
+							
 							<label for="caixaSelecaoEquipamento">Selecione um
 								equipamento </label>
 							<h:outputText value="&lt;br/&gt;" escape="false" />
 
+
 							<h:selectOneMenu label="Equipamento" id="caixaSelecaoEquipamento"
 								value="#{cadastroSensorBean.equipamento.id}"
-								class="btn btn-default dropdown-toggle">
+								class="btn btn-default dropdown-toggle" required="true"
+								requiredMessage="Por favor selecione um equipamento">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{cadastroSensorBean.equipamentos}"
 									var="_equipamento" itemValue="#{_equipamento.id}"
@@ -32,17 +36,17 @@
 								<f:ajax listener="#{cadastroSensorBean.atualizarLista}"
 									event="change" execute="@this caixaSelecaoEquipamento"
 									render="tabela" />
-
-
 							</h:selectOneMenu>
 						</div>
 
+						<h:message for="nomeSensor" style="color: red;" />
 						<div class="form-group">
+
 							<h:outputText value="&lt;br/&gt;" escape="false" />
 							<h:inputText id="nomeSensor" class="form-control"
 								pt:placeholder="Nome do Sensor"
 								value="#{cadastroSensorBean.sensor.nome}" required="true"
-								requiredMessage="Por favor digite o nome do Componente" />
+								requiredMessage="Por favor digite o nome do Sensor" />
 
 						</div>
 
@@ -53,16 +57,12 @@
 							<h:commandButton class="btn btn-primary" value="Salvar"
 								action="#{cadastroSensorBean.cadastrar}" id="botaoCadastrar"
 								process="@this" update="tabelaSensores">
-
-								
-
-
 							</h:commandButton>
 						</div>
 
 
 					</h:form>
-					
+
 
 					<h:form id="tabela">
 						<h4 class="page-header">Sensores</h4>
@@ -106,14 +106,14 @@
 								<h:commandLink value="Editar"
 									action="#{cadastroSensorBean.editAction(_sensor)}"
 									rendered="#{not _sensor.editable}">
-									
+
 								</h:commandLink>
 
 								<h:outputText value="&#160;" />
 
 								<h:commandLink value="Deletar"
 									action="#{cadastroSensorBean.deletarAction(_sensor)}">
-									
+
 								</h:commandLink>
 
 							</h:column>

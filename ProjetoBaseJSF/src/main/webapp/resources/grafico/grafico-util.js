@@ -1,8 +1,8 @@
 function buscarPontos() {
 	var url = ctx + "/rest/historico/buscarPontos";
 	var idSensor = $("select[name$='caixaSelecaoSensor'] option:selected").val();
-	var dataIncial = $("#dataInicio").val();
-	var dataFinal = $("#dataFim").val();
+	var dataIncial = $("#datetimepicker1").data("DateTimePicker").date().format();
+	var dataFinal = $("#datetimepicker2").data("DateTimePicker").date().format();
 	
 	var parametrosRequest = new parametros(idSensor, dataIncial, dataFinal);
 	var parametrosRequestJSON = JSON.stringify(parametrosRequest);

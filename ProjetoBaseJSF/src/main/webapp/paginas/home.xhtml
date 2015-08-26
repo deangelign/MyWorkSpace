@@ -27,7 +27,17 @@
 
 							<script
 								src="${facesContext.externalContext.requestContextPath}/resources/grafico/grafico-util.js"></script>
-							
+
+							<script
+								src="${facesContext.externalContext.requestContextPath}/resources/dataFashion/moment.js"></script>
+
+							<link
+								href="${facesContext.externalContext.requestContextPath}/resources/dataFashion/bootstrap-datetimepicker.css"
+								rel="stylesheet" />
+
+							<link
+								href="${facesContext.externalContext.requestContextPath}/resources/dataFashion/bootstrap-datetimepicker.min.css"
+								rel="stylesheet" />
 
 							<div>
 								<label for="caixaSelecaoEquipamentoHome1">Selecione um
@@ -52,10 +62,11 @@
 
 
 							<div>
+							
 								<h:outputText value="&lt;br/&gt;" escape="false" />
 								<label for="caixaSelecaoSensor">Selecione um Sensor </label>
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-
+								
 								<h:selectOneMenu label="Sensor" id="caixaSelecaoSensor"
 									value="#{cadastroSensorBean.sensor.id}"
 									class="btn btn-default dropdown-toggle">
@@ -70,35 +81,84 @@
 
 							<h4 class="page-header">Buscar por Periodo</h4>
 							<div class="form-group">
-								<label for="dataInicio">De</label> <input type="date"
-									class="form-control" id="dataInicio" name="dataInicio" />
+								
+								<div class="container">
+									<h:outputText value="De" />
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker1'>
+											<input type='text' class="form-control" /> <span
+												class="input-group-addon"> <span
+												class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+
+										<script type="text/javascript">
+											$(function() {
+												$('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+											});
+										</script>
+
+									</div>
+								</div>
 							</div>
+							
+															
 
 							<div class="form-group">
-								<label for="dataFim">Ate</label> <input type="date"
-									class="form-control" id="dataFim" name="dataFim" />
+								<h:outputText value="&lt;br/&gt;" escape="false" />
+								
+								<div class="container">
+									<h:outputText value="Ate" />
+									<div class="form-group">
+										<div class='input-group date' id='datetimepicker2'>
+											<input type='text' class="form-control" /> <span
+												class="input-group-addon"> <span
+												class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+
+										<script type="text/javascript">
+											$(function() {
+												$('#datetimepicker2').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+											});
+										</script>
+
+									</div>
+								</div>
+
 							</div>
 						</h:form>
-						
-						
-						<div class="form-group">
-							<br/>
-							<button type="button" class="btn btn-primary" onclick="buscarPontos()">Buscar</button>
 
+
+						<div class="form-group">
+							<br />
+							<button type="button" class="btn btn-primary"
+								onclick="buscarPontos()">Buscar</button>
 						</div>
 
+
+
+
+
 						<div id="grafico"
-							style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+							style="min-width: 310px; height: 400px; margin: 0 auto">
+							/div></div>
+
+
 					</div>
-					
+
+
 					<script
 						src="${facesContext.externalContext.requestContextPath}/resources/highchart/js/highstock.js"></script>
 
 					<script
 						src="${facesContext.externalContext.requestContextPath}/resources/highchart/js/exporting.js"></script>
 
-					
-					
+
+					<script
+						src="${facesContext.externalContext.requestContextPath}/resources/dataFashion/bootstrap-datetimepicker.min.js"></script>
+
+
 				</div>
 				<!-- /.col-lg-12 -->
 			</div>
