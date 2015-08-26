@@ -62,11 +62,11 @@
 
 
 							<div>
-							
+
 								<h:outputText value="&lt;br/&gt;" escape="false" />
 								<label for="caixaSelecaoSensor">Selecione um Sensor </label>
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-								
+
 								<h:selectOneMenu label="Sensor" id="caixaSelecaoSensor"
 									value="#{cadastroSensorBean.sensor.id}"
 									class="btn btn-default dropdown-toggle">
@@ -79,9 +79,16 @@
 								</h:selectOneMenu>
 							</div>
 
+
+
 							<h4 class="page-header">Buscar por Periodo</h4>
+
+							<div>
+								<label class="control-label" id="bujao" style="color: red;"></label>
+							</div>
+							
 							<div class="form-group">
-								
+
 								<div class="container">
 									<h:outputText value="De" />
 									<div class="form-group">
@@ -94,19 +101,23 @@
 
 										<script type="text/javascript">
 											$(function() {
-												$('#datetimepicker1').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+												$('#datetimepicker1')
+														.datetimepicker(
+																{
+																	format : 'DD/MM/YYYY HH:mm'
+																});
 											});
 										</script>
 
 									</div>
 								</div>
 							</div>
-							
-															
+
+
 
 							<div class="form-group">
 								<h:outputText value="&lt;br/&gt;" escape="false" />
-								
+
 								<div class="container">
 									<h:outputText value="Ate" />
 									<div class="form-group">
@@ -119,7 +130,11 @@
 
 										<script type="text/javascript">
 											$(function() {
-												$('#datetimepicker2').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+												$('#datetimepicker2')
+														.datetimepicker(
+																{
+																	format : 'DD/MM/YYYY HH:mm'
+																});
 											});
 										</script>
 
@@ -142,7 +157,7 @@
 
 						<div id="grafico"
 							style="min-width: 310px; height: 400px; margin: 0 auto">
-							/div></div>
+							</div>
 
 
 					</div>

@@ -4,6 +4,14 @@ function buscarPontos() {
 	var dataIncial = $("#datetimepicker1").data("DateTimePicker").date().format();
 	var dataFinal = $("#datetimepicker2").data("DateTimePicker").date().format();
 	
+	if(dataIncial > dataFinal){
+		document.getElementById('bujao').innerHTML =  "Data de inicio é maior que data final"
+		return;
+	}
+	else{
+		document.getElementById('bujao').innerHTML =  ""
+	}
+	
 	var parametrosRequest = new parametros(idSensor, dataIncial, dataFinal);
 	var parametrosRequestJSON = JSON.stringify(parametrosRequest);
 	
@@ -27,6 +35,11 @@ function buscarPontos() {
 			  graficoHighChart.series[0].setData(pontosGrafico);
 			  graficoHighChart.yAxis[0].update();	
 			 
+			  
+			  
+		  },
+		  error: function (xhr, ajaxOptions, thrownError){
+			  
 		  }
 		});
 

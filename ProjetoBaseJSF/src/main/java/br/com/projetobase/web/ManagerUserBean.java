@@ -39,7 +39,6 @@ public class ManagerUserBean extends AbstractBean{
 	}
 	
 	public void cadastrar() {
-
 		 usuarioService.salvar(usuario);
 		 atualizarLista();
 		 usuario = new Usuario();
