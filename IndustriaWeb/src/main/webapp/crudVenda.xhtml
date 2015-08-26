@@ -13,8 +13,8 @@
 
 
 		<f:metadata>
-			<f:viewAction action="#{produtoBean.atualizarLista}" />
-			<f:viewAction action="#{produtoBean.atualizarListas}" />
+			<f:viewAction action="#{vendaBean.atualziarListas}" />
+			<f:viewAction action="#{vendaBean.atualziarLista}" />
 		</f:metadata>
 
 
@@ -29,25 +29,106 @@
 					<h4 class="page-header">Cadastro</h4>
 
 					<h:form id="form">
-						<h:message for="nomeProduto" style="color: red;" />
+						<h:message for="caixaSelecaoCliente" style="color: red;" />
 
 						<div class="form-group">
 
 							<h:selectOneMenu label="Cliente" id="caixaSelecaoCliente"
-								value="#{entregaBean.entrega.motorista.id}"
+								value="#{vendaBean.venda.cliente.id}"
 								class="btn btn-default dropdown-toggle" required="true"
-								requiredMessage="por faovor, selecione um Motorista">
-								<f:selectItem itemLabel="Selecione" />
-								<f:selectItems value="#{entregaBean.motoristas}"
-									var="_motorista" itemValue="#{_motorista.id}"
-									itemLabel="#{_motorista.nome}" />
+								requiredMessage="por faovor, selecione um cliente">
+								<f:selectItem itemLabel="Cliente" />
+								<f:selectItems value="#{vendaBean.clientes}" var="_cliente"
+									itemValue="#{_cliente.id}" itemLabel="#{_cliente.nome}" />
 							</h:selectOneMenu>
-
-
 
 						</div>
 
+						<h:message for="caixaSelecaoVendedor" style="color: red;" />
+						<div class="form-group">
+
+							<h:selectOneMenu label="Vendedor" id="caixaSelecaoVendedor"
+								value="#{vendaBean.venda.vendedor.id}"
+								class="btn btn-default dropdown-toggle" required="true"
+								requiredMessage="por faovor, selecione um vendedor">
+								<f:selectItem itemLabel="Vendedor" />
+								<f:selectItems value="#{vendaBean.vendedores}" var="_vendedor"
+									itemValue="#{_vendedor.id}" itemLabel="#{_vendedor.nome}" />
+							</h:selectOneMenu>
+
+						</div>
+
+
+						<h:message for="caixaSelecaoEntrega" style="color: red;" />
+						<div class="form-group">
+
+							<h:selectOneMenu label="Entrega" id="caixaSelecaoEntrega"
+								value="#{vendaBean.venda.entrega.id}"
+								class="btn btn-default dropdown-toggle" required="true"
+								requiredMessage="por faovor, selecione um vendedor">
+								<f:selectItem itemLabel="Entrega" />
+								<f:selectItems value="#{vendaBean.entregas}" var="_entrega"
+									itemValue="#{_entrega.id}" itemLabel="#{_entrega.dataHora}">
+								</f:selectItems>
+							</h:selectOneMenu>
+						</div>
+
+
+						<h:commandButton value="Cadastrar" class="btn btn-primary"
+							action="#{vendaBean.cadastrar}" />
+
+
 					</h:form>
+
+
+					<h:form id="tabela">
+
+						<h4 class="page-header">Vendas</h4>
+						<h:dataTable value="#{vendaBean.vendas}" var="_venda"
+							id="tabelaVenda" styleClass="table table-condensed">
+
+							<h:column>
+								<f:facet name="header"> cliente </f:facet>
+
+								<h:outputText value="#{_venda.cliente.nome}"
+									rendered="#{not _venda.editable}" />
+
+
+							</h:column>
+
+
+							<h:column>
+								<f:facet name="header"> Vendedor </f:facet>
+
+								<h:outputText value="#{_venda.vendedor.nome}"
+									rendered="#{not _venda.editable}">
+								</h:outputText>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header"> Entrega </f:facet>
+
+								<h:outputText value="#{_venda.entrega.dataHora}"
+									rendered="#{not _venda.editable}">
+									<f:convertDateTime pattern="dd/MM/yyyy" />
+								</h:outputText>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">Action</f:facet>
+
+								<h:commandLink value="Deletar"
+									action="#{vendaBean.deletarAction(_venda)}">
+
+								</h:commandLink>
+							</h:column>
+
+						</h:dataTable>
+
+					</h:form>
+
+
+
 
 				</div>
 

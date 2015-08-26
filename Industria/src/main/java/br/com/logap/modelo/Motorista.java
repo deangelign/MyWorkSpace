@@ -20,7 +20,7 @@ public class Motorista extends PessoaFisica{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_veiculo")
 	private Veiculo veiculo;
 	
@@ -30,7 +30,9 @@ public class Motorista extends PessoaFisica{
 	@Transient
 	boolean editable;
 	
-	public Motorista(){}
+	public Motorista(){
+		veiculo = new Veiculo();
+	}
 
 	public Veiculo getVeiculo() {
 		return veiculo;

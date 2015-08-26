@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.logap.dao.ModeloPersistencia;
 
@@ -22,31 +23,25 @@ public class Venda extends ModeloPersistencia{
 	private static final long serialVersionUID = 1L;
 	
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_vendedor")
 	private Vendedor vendedor;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	@OneToOne(cascade = CascadeType.REMOVE)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name = "id_entrega")
 	private Entrega entrega;
-			
-	@Column(name = "valor", nullable = false)
-	private long valorTotal;
 	
-	public Venda(){}
-
-
-
-	public long getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(long valorTotal) {
-		this.valorTotal = valorTotal;
+	@Transient
+	boolean editable;
+	
+	public Venda(){
+		cliente = new Cliente();
+		vendedor = new Vendedor();
+		entrega = new Entrega();
 	}
 
 	public Vendedor getVendedor() {
@@ -72,5 +67,15 @@ public class Venda extends ModeloPersistencia{
 	public void setEntrega(Entrega entrega) {
 		this.entrega = entrega;
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
+	
+	
 	
 }

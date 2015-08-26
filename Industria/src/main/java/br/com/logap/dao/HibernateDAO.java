@@ -31,6 +31,15 @@ public abstract class HibernateDAO<T extends ModeloPersistencia> implements
 		transaction.commit();
 		session.close();
 	}
+	
+	public void inserirFlush(T objeto) {
+		session = sessionManager.getSession();
+		transaction = session.beginTransaction();
+		session.save(objeto);
+		session.flush();
+		transaction.commit();
+		session.close();
+	}
 
 	public void remover(T objeto) {
 		session = sessionManager.getSession();

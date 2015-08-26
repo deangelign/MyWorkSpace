@@ -37,7 +37,7 @@
 							<h:selectOneMenu label="Motorista" id="caixaSelecaoMotorista"
 								value="#{entregaBean.entrega.motorista.id}"
 								class="btn btn-default dropdown-toggle" required="true"
-								requiredMessage="por faovor, selecione um Motorista">
+								requiredMessage="por faovor, selecione um cliente">
 								<f:selectItem itemLabel="Selecione" />
 								<f:selectItems value="#{entregaBean.motoristas}"
 									var="_motorista" itemValue="#{_motorista.id}"
@@ -123,12 +123,6 @@
 
 			</div>
 		</div>
-
-		<style type="text/css">
-.ui-datepicker.ui-widget {
-	font-size: 20px;
-}
-</style>
 
 	</ui:define>
 
