@@ -1,2 +1,3 @@
 # MyWorkSpace
-repositorio para os projetos em desenvolvimento
+Repository used for web systems development sandbox. 
+
